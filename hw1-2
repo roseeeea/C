@@ -6,7 +6,7 @@ int main(void)
     scanf("%d.%d %d.%d", &x1, &x2, &y1, &y2);
     int X= x1*100+x2;
     int Y= y1*100+y2;
-    printf("%d.%04d\n", (X*Y)/10000, (X*Y)%10000);
+    printf("%d.%04d\n", (X*Y)/10000, (X*Y)%10000); \\04表示想要小數點後四位，少的用零表示
     return 0;
 }
 
@@ -50,7 +50,7 @@ int main(void)
 {
     double x,y;
     scanf("%lf %lf", &x,&y);
-    printf("%10.4lf\n", x*y);
+    printf("%10.4lf\n", x*y); //10表示小數點前要十位數, 小數點後要四位
     return 0;
 }
 */

@@ -1,0 +1,56 @@
+#include<stdio.h>
+
+int main(void)
+{
+    int x1,x2, y1,y2;
+    scanf("%d.%d %d.%d", &x1, &x2, &y1, &y2);
+    int X= x1*100+x2;
+    int Y= y1*100+y2;
+    printf("%d.%04d\n", (X*Y)/10000, (X*Y)%10000);
+    return 0;
+}
+
+
+
+/*
+#include<stdio.h>
+
+int main(void)
+{
+    float x, y, z;
+    scanf("%f %f", &x, &y);
+    z=x*y;
+    printf("%10.4f\n", z);   \\ the preciesly isn't enough
+    
+    return 0;
+    
+}
+*/
+
+/*
+#include<stdio.h>
+
+int main(void)
+{
+    int x1, x2, y1, y2, z1, z2;
+    scanf("%d.%d %d.%d", &x1, &x2, &y1, &y2);
+    z1=x1*100+x2;
+    z2=y2*100+y2;
+    printf("%d.%04d\n", z1*z2/10000, z1*z2%10000);
+    
+    return 0;
+    
+}
+*/
+
+/*
+#include<stdio.h>
+
+int main(void)
+{
+    double x,y;
+    scanf("%lf %lf", &x,&y);
+    printf("%10.4lf\n", x*y);
+    return 0;
+}
+*/

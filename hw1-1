@@ -1,0 +1,13 @@
+//http://140.114.85.195/contest/84/problem/A
+
+#include<stdio.h>
+
+int main(void)
+{
+    int l, r;
+    scanf("%d %d", &l, &r);
+   
+    printf("%d %d\n", l, 2*l);
+
+    return 0;
+}

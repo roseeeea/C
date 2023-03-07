@@ -1,0 +1,51 @@
+/* class note
+
+#include<stdio.h>
+#include<string.h>
+# define SPEED 0.083  //將所有SPEED作為0.083
+
+int main(void){
+  float minutes, distance;  //32 bits(4bytes // double 64bits
+  int size, letters, my_letters; //32 bits
+  char name[10];  //char 字元（一字元1byte = 8bits）,以ASCII的編碼儲存
+                  //字串會停在"\0"，字元超過會堵在input被下次scanf讀取
+                  //array 陣列，放在同一個記憶體， ex:char name[10][5](50bytes)
+                  //string 字串
+  
+  printf("Hi! What's your first name?");
+  scanf("%9s", name); //%9s 只讀九個字元， 超過九不給打字，最後ㄧ個自動補入\0
+  printf("\n&s, howhow many minutes does it take to walk from\n", name"); //"\n" 換行
+  printf("your dormitory to the delta building? ");
+  scanf("%f", &minutes);
+  size = sizeof(name); //計算多少個bytes
+  letter = strlen(name); //計算多少個字元
+  
+  return 0;
+  
+}
+
+____________________________________________
+
+
+// \%10.7d ~10含小數點前10字元，小數點後七位
+// \%010d～少的字元補零
+#define decoration ##################
+
+char word[16];
+printf("%s\n", word);
+printf("%.3s\n", word); 
+printf("%10.3s\n") //留下十字元寬度(10-3是空格)，三個精確度(顯現的字數)
+printf("%.*s\n", (int)strlen(word)+2, decoration); //strlen 產出的是long unsigned int (size_t) 要將它轉成int
+printf("%*.*s\n", 7, 4, word);
+
+＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
+
+printf("%s\n", __FILE__);
+printf("%s\n", __LINE__);
+printf("%s\n", __DATE__);
+printf("%s\n", __TIME__);
+printf("%s\n", __func__);
+
+_____________________________________________
+
+*/

@@ -48,4 +48,56 @@ printf("%s\n", __func__);
 
 _____________________________________________
 
+#include<stdio.h>
+
+
+int main(void){
+  int x,n;
+  int i, sum;
+  int a[50];
+  printf("How many numbers? (n<50)" );
+  scanf("%d", &n);
+  i = 0;
+  
+  while(i<n)
+  {
+    printf("Input a[%d];", i);
+    scanf("%d", &x);
+    
+    printf("The number is %d\n", x);
+    
+    a[i]=x;
+    i =i+1;
+    
+  }
+  i=0;
+  
+  sum=0;
+  while(i<n){
+    printf("%d + ", a[i]);
+    sum= sum +a[i];
+    i++;
+    
+  }
+  
+  printf("\b\b= %d\n", sum); //\b 擋掉前面的字元("+ ")
+  
+  return 0;
+  
+}
+
+///homework : 9*9 triangle
+// unsigned int (natual number int)
+// char ~ printf("%c\n", char)~ ％c 顯示字元
+＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
+
+// int x[10][11]={0}; //全部的初值都是0
+//homework: pascal triangle
+// int x[10][11]={0}; 
+//i++ i‘=i+1 先把i拿去做事，再加一（i'）
+// ++i 直接以i'去做事
+// int i = 'A' ~i=65
+//x = scanf("%d", &n), x=1~ success, x=0~ fail
+
 */
+

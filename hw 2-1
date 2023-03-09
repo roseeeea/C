@@ -1,0 +1,14 @@
+#include<stdio.h>
+
+int main(void){
+    double x,y, sum;
+    int z;
+    
+    scanf("%lf %lf %d",&x, &y, &z); // can not use common,
+    sum = x*y;
+    printf("%.*lf \n", z, sum);
+    
+    
+    
+    return 0;
+}

@@ -1,0 +1,60 @@
+#define SPEED 3 // define the tern SPEED = 3 in this code
+// c += a; c= c+a
+// for (int i=1, a=3; i<10; i++, a=a+i){}
+______________________________
+#include<stdio.h>
+#define ENGINE 1499.99
+
+void test_float(void){
+  printf("%f\n, ENGINE); 
+  printf("%4.2f\n", ENGINE); \\ 4 length(before dot), 2 precise(after dot)
+  printf("%3.1f\n", ENGINE); \\the length doesn't fit, ENGINE being round off (四捨五入
+  printf("%010.2f\n", ENGINE); \\the length should be 10 bits, un-filled space use 0 to fill
+  
+}
+
+int main(void){
+  test_float();
+return 0;
+}
+______________________________
+
+//introduction of the string.h data base
+#include<string.h>
+
+char NAME[10]; //the NAME has the limit of 9 letter length
+strilen() //counting the length of the string, ex: cat~3
+
+______________________________
+#include<stdio.h>
+#include<string.h>
+#define BORDER "#################################"
+
+int main(void){
+  char word[26];
+  scanf(:%25s\n", word);
+  printf("%.*s\n", (int)strlen(word)+2, BORDER);
+  printf("#%s#\n", word);
+  printf("%.*s\n", (int)strlen(word)+2, BORDER); //%.*s indicates how many(*) letters you want to show
+  //if "%*.*s" means *manny spaces(front) and *manny letters u indicate
+return 0; }
+______________________________
+#include<stdio.h>
+#include<string.h>
+
+int main(void){
+  int i=1, word_len;
+  char word[40];
+  scanf("%39s", word); // only word not word[40]
+  
+  word_len = strilen(word);
+  
+  while(i<= word_len){
+  printf("%*.*s\n", word_len, i, word); //remember there are three varieble
+  i++;
+  }
+return 0;}
+
+_____________________________
+
+

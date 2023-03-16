@@ -1,0 +1,47 @@
+#include<stdio.h>
+
+int main(void){
+    int n;
+    
+    scanf("%d", &n);
+    int index[n];
+    int list[n];
+    int ans[n];
+    
+    for(int i=0; i<n; i++){
+        scanf("%d", &index[i]);
+    }
+    for(int i=0; i<n; i++){
+        scanf("%d", &list[i]);
+    }
+   
+    int c=0;
+
+
+    for(int i=0; i<n; i++){
+        for(int j=c; j<n; j++){
+            if(index[j]==list[i]){
+                if(i==0){
+                    ans[i] = j-c+1;
+                    c=j;
+                    break;
+                }
+                else{
+                    ans[i] = j-c;
+                    c=j;
+                    break;
+                }
+            }
+            else{
+                ans[i]=0;
+            }
+        }
+        
+    }
+    
+    for(int i=0; i<n; i++){
+        printf("%d ", ans[i]);
+    }
+    return 0;
+}
+//http://140.114.85.195/contest/86/problem/B

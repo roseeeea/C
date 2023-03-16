@@ -67,3 +67,33 @@ int main(void){
     */
     return 0;}
 */
+
+/*
+#include<stdio.h>
+#include<ctype.h>
+
+int main(void){
+    int n, q;
+    
+    scanf("%d%d", &n, &q);
+    char T[n];
+
+    for(int i=0; i<n; i++){
+        char k[100];
+        scanf("%s", k);
+        if(isdigit(k[0])){
+            T[i]=k[0];
+        }
+    }
+
+    
+    for(int j=0; j<q; j++){
+        int l, r;
+       
+        scanf("%d%d", &l, &r);
+        printf("%d\n", T[l-1]+T[r-1]-'0'-'0');
+    }
+     
+    return 0;}
+
+*/

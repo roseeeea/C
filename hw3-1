@@ -51,7 +51,7 @@ int main(void){
             i++;
         }
         else{
-            dump[i]=getchar();
+            dump[i]=getchar(); \\吃掉了我的
         }
     }
     

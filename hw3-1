@@ -32,3 +32,38 @@ int main(void){
     
     return 0;}
     */
+/*
+#include<stdio.h>
+#include<ctype.h>
+
+int main(void){
+    int n, q;
+    
+    scanf("%d%d", &n, &q);
+    char trash[n];
+    char dump[15*n];
+    
+    int i=0;
+    while(i != n){
+        char k;
+        if(isdigit(k = getchar())){
+            trash[i]=k;
+            i++;
+        }
+        else{
+            dump[i]=getchar();
+        }
+    }
+    
+    for(int a=0; a<n; a++){
+        printf("%d ", trash[a]);
+    }
+    /*
+    for(int j=0; j<q; j++){
+        int l, r;
+        scanf("%d%d", &l, &r);
+        printf("%d%d\n", trash[l],trash[r]);
+    }
+    */
+    return 0;}
+*/

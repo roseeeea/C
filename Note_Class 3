@@ -1,6 +1,7 @@
 #define SPEED 3 // define the tern SPEED = 3 in this code
 // c += a; c= c+a
 // for (int i=1, a=3; i<10; i++, a=a+i){}
+//(num == div*div) ? 1 : 0~ if num = div*div, then output 1; else 0;
 ______________________________
 #include<stdio.h>
 #define ENGINE 1499.99
@@ -58,3 +59,60 @@ return 0;}
 _____________________________
 
 //http://tw.gitbook.net/c_standard_library/ctype_h.html
+#include<stdio.h>
+#include<ctype.h>
+
+int main(void){
+char ch;
+
+while((ch=getchar()) != '\n'){
+  putvhar(tolower(ch));
+}
+putchar('\n');
+return 0;}
+//int isalnum(int c) if it is alpha number
+//int isalpha(int c) if it is alpha 
+//int isdigit(int c) if it is a decimal number~ int isxdigit() ~ hexidecimal
+//int islower(int c), int isupper(int c)
+//int tolower(int c), int toupper(int c)
+//int ispunt(int c), unt isspace(int c)
+
+______________________________
+#include<stdio.h>
+
+void check(int cond){
+  if (cond){
+    printf("true\n");
+    }
+  else{
+    printf("false"\n);
+   }
+}
+
+int main(void){
+int x = 3;
+int y = 5;
+
+check(x>2 && y==3};
+check(!(x<2 || y==3));
+check(x!= y && (20/x)<y);
+check(!(y>5 || y<2) && !(x%5));
+______________________________
+#include<stdio.h>
+
+int main(void){
+int x, y, z;
+int a, b, c;
+
+scanf("%d$d$d", &x, &y, &z);
+scanf("%d%d$d", &a, &b, &c);
+for(i=1; i<=x*y*z*5; i++){
+   if(x%a==a && i%y==b && i%z==c){
+    printf(%d\n", i);
+    breck;
+   }
+}
+
+return 0;}
+
+

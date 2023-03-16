@@ -1,3 +1,38 @@
+#include<stdio.h>
+#include<ctype.h>
+
+int main(void){
+    int n, q;
+    
+    scanf("%d%d", &n, &q);
+    char T[2*n];
+
+    for(int i=0; i<2*n; i++){
+        char k[100];
+        scanf("%s", k);
+            T[i]=k[0];
+        
+    }
+    
+    /*
+    for(int a=0; a<2*n; a++){
+        printf("%d ", T[a]);
+    }
+    */
+    
+    for(int j=0; j<q; j++){
+        int l, r;
+        int sum=0;
+        
+        scanf("%d%d", &l, &r);
+        for(int i=l; i<=r; i++){
+            sum=sum+T[(i-1)*2]-'0';
+        }
+
+        printf("%d\n", sum);
+    }
+     
+    return 0;}
 /*
 #include<stdio.h>
 #include<ctype.h>

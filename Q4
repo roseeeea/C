@@ -1,4 +1,23 @@
-//run over time
+#include<stdio.h>
+
+int main(void){
+    long long a, b, c;
+    
+    scanf("%lld%lld%lld", &a, &b, &c);
+    
+    if(b*b==a*c){  //break down, b may overflow
+        long long x=b/a;
+        printf("%d %d", a/x, c*x); 
+    }
+    else if(b-a==c-b){  //still have the chance of overflow
+        long long x= b-a;
+        printf("%d %d", a-x, c+x);
+    }
+    
+    return 0;}
+    
+    
+//run over time(the solution from chatgpt: turn to long long in order not to overflow)
 #include<stdio.h>
 
 int main(void){
@@ -15,20 +34,4 @@ int main(void){
     
     return 0;}
 
-#include<stdio.h>
 
-int main(void){
-    int a, b, c;
-    
-    scanf("%d%d%d", &a, &b, &c);
-    
-    if(b*b==a*c){  //break down, b may overflow
-        int x=b/a;
-        printf("%d %d", a/x, c*x);
-    }
-    else if(b-a==c-b){
-        int x= b-a;
-        printf("%d %d", a-x, c+x);
-    }
-    
-    return 0;}

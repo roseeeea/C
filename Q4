@@ -1,0 +1,16 @@
+//run over time
+#include<stdio.h>
+
+int main(void){
+    int a, b, c;
+    
+    scanf("%d%d%d", &a, &b, &c);
+    
+    if(b/a==c/b){
+        printf("%d %d", a*a/b, c*b/a);
+    }
+    else if(b-a==c-b){
+        printf("%d %d", 2*a-b, c+b-a);
+    }
+    
+    return 0;}

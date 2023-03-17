@@ -22,7 +22,7 @@ int main(void){
     
     scanf("%d%d%d", &a, &b, &c);
     
-    if(b*b==a*c){  //break down
+    if(b*b==a*c){  //break down, b may overflow
         int x=b/a;
         printf("%d %d", a/x, c*x);
     }

@@ -1,3 +1,38 @@
+
+#include <stdio.h>
+#include <string.h>
+
+int main(void) {
+    int n, q;
+
+    scanf("%d%d", &n, &q);
+    getchar(); // 把換行符號吃掉
+
+    char input[15*n]; // 一行最多有 15 個數字
+
+    fgets(input, sizeof(input), stdin); // 讀入整行輸入
+    int trash[n];
+    int num_trash = sscanf(input, "%d", &trash[0]); // 提取第一個數字
+    for (int i = 1; i < n; i++) {
+        int num_read = sscanf(input + strlen(input) - strlen(strchr(input, ' ')), "%d", &trash[i]); // 找出下一個空格，提取下一個數字
+        if (num_read != 1) {
+            break;
+        }
+    }
+
+    for (int a = 0; a < n; a++) {
+        printf("%d ", trash[a]);
+    }
+
+    for (int j = 0; j < q; j++) {
+        int l, r;
+        scanf("%d%d", &l, &r);
+        printf("%d%d\n", trash[l], trash[r]);
+    }
+
+    return 0;
+}
+＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
 //TA answer
 //TA answer
 

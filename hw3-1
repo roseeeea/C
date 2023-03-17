@@ -42,7 +42,7 @@ _____________________________________________
 
 int main(void){
     int n, q; // n<10^6; q<10^5
-    long long T[100000]; //the an<10^9
+    long long T[100000]; //the an<10^9, 只有五個零，n最大可能10^6
     long long pre[100000];
     
     scanf("%d%d", &n, &q);
@@ -57,7 +57,7 @@ int main(void){
         pre[i]=pre[i-1]+T[i-1];  //time only 1n(10^9)
     }
    
-    for(int j=0; j<q; j++){  //for 只有partial
+    for(int j=0; j<q; j++){  //for 只有partial    //for 在此時間複雜度比較高，因為for迴圈內容依然有回圈，大的for本身已經要計算更迭次數，若內容再有回圈，會比while（只需要判斷是否條件符合）複雜
         int l, r; //int can only for <10^9
         scanf("%d%d", &l, &r);
         

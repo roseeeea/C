@@ -6,11 +6,29 @@ int main(void){
     
     scanf("%d%d%d", &a, &b, &c);
     
-    if(b/a==c/b){
+    if(b/a==c/b){ // there is a possibility that divisor is 0
         printf("%d %d", a*a/b, c*b/a);
     }
     else if(b-a==c-b){
         printf("%d %d", 2*a-b, c+b-a);
+    }
+    
+    return 0;}
+
+#include<stdio.h>
+
+int main(void){
+    int a, b, c;
+    
+    scanf("%d%d%d", &a, &b, &c);
+    
+    if(b*b==a*c){  //break down
+        int x=b/a;
+        printf("%d %d", a/x, c*x);
+    }
+    else if(b-a==c-b){
+        int x= b-a;
+        printf("%d %d", a-x, c+x);
     }
     
     return 0;}

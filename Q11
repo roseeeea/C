@@ -1,3 +1,24 @@
+correct:
+#include<stdio.h>
+
+
+int main(void){
+    int n;
+    scanf("%d", &n);
+    
+    if(n<=3){
+        printf("%d\n", n);
+    }
+    else{
+        int a=(n-4)%3;
+        int x=(n-a-4)/3*2+3;
+        printf("%d\n", a+x);
+    }
+    
+    return 0;
+}
+
+_______________________
 #include<stdio.h>
 
 int A(int n){

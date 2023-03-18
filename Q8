@@ -1,0 +1,44 @@
+#include<stdio.h>
+#include<string.h>
+
+int main(void){
+    char A[5];
+    int n; // n<10
+    
+    scanf("%4s", A); //記得string 寫法
+    scanf("%d", &n);
+    
+    unsigned long alen=strlen(A);
+   
+
+    
+    
+    int record2=0;//紀錄最高次數
+    while(n--){
+        int record1=0;
+        char B[9];
+        scanf("%8s", B);
+        unsigned long blen= strlen(B);
+        
+        for(int i=0; i<(int)blen; i++){
+            if(B[i]==A[0]){
+                for(int j=0; j<(int)alen; j++){
+                    if(B[i+j]!=A[j]){
+                        break;
+                    }
+                    if(j==(int)alen-1){
+                    record1 ++;
+                    }
+                }
+            }
+            
+        }
+        if(record1>record2){
+            record2=record1;
+        }
+    }
+    
+    printf("%d", record2);
+    
+
+    return 0;}

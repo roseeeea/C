@@ -1,0 +1,32 @@
+#include<stdio.h>
+
+int A(int n){
+    int x = n/4*3;
+    int y = n%4;
+    return (x+y);
+}
+
+int B(int n){
+    int a =(n-13)/9;
+    int x=9+6*a;
+    int b =(n-13)%9;
+    int y= A(b);
+    return (x+y);
+}
+
+int main(void){
+    int n;
+    int m;
+    scanf("%d", &n);
+    
+    if(n<13){
+        m = A(n);
+        printf("%d\n", m);
+    }
+    else{
+        m = B(n);
+        printf("%d\n", m);
+    }
+    
+    return 0;
+}

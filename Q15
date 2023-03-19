@@ -1,15 +1,21 @@
 #include<stdio.h>
-#include<math.h>
 
-int divisor(int x){
-    int ans=0;
-    for(int i=1; i<x; i++){
-        if(x%i==0){
-            ans++;
+int divisor(int x) {
+    int sum = 0, i;
+    for(i = 1; i<x; i++){
+        if(x%i == 0){
+            if(x/i < i){    //只算一半的量
+                break;
+            }else if (x/i == i){       //如果是重根的數字只需要要加一
+                sum += 1;
+                break;
+            }
+            sum += 2;
         }
     }
-    return ans;
+    return sum;
 }
+
 
 //______________________
 
@@ -41,4 +47,20 @@ int main(void){
     
     
     return 0;
+}
+
+
+
+
+____________________________
+
+
+int divisor(int x){
+    int ans=0;
+    for(int i=1; i<x; i++){     //回圈數太多, run time
+        if(x%i==0){
+            ans++;
+        }
+    }
+    return ans;
 }

@@ -1,0 +1,44 @@
+#include<stdio.h>
+#include<math.h>
+
+int divisor(int x){
+    int ans=0;
+    for(int i=1; i<x; i++){
+        if(x%i==0){
+            ans++;
+        }
+    }
+    return ans;
+}
+
+//______________________
+
+int main(void){
+    int T; // <20
+    
+    scanf("%d", &T);
+    
+ //here the data
+    while(T--){
+        int l, r;  // all <20000
+        int K=0; //the output's
+        
+        
+        scanf("%d%d", &l, &r);
+        
+        int output=l;
+        
+        for(int i=l; i<=r; i++){
+            int h=divisor(i);
+            if(h>K){
+                K=h;
+                output=i;
+            }
+        }
+        printf("%d\n", output);
+        
+    }
+    
+    
+    return 0;
+}

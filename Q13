@@ -1,0 +1,23 @@
+#include<stdio.h>
+
+int main(void){
+    int X, Y;
+    
+    scanf("%x%x", &X, &Y);
+    
+    int Z=X+Y;
+    
+    int binary[1000000];
+    int i=0;
+    
+    while(Z!=0){
+        binary[i]=Z%2;
+        i++;
+        Z=Z/2;
+    }
+    
+    for(int j=i-1; j>-1; j--){
+        printf("%d", binary[j]);
+    }
+    return 0;
+}

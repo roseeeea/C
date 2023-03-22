@@ -29,3 +29,30 @@ int main(void){
     }
     return 0;
 }
+_____________________________________________
+#include<stdio.h>
+
+int main(void){
+    long long n, q;  // <10^6
+    
+    
+    scanf("%lld%lld", &n, &q);
+    long long treasure[n];   // <10^5
+     
+    for(int i=1; i<n+1; i++){
+        scanf("%lld", &treasure[i]);
+    }
+    
+    while(q--){
+        int l, r, m;   //l,r<10^6
+        scanf("%d%d%d", &l, &r, &m);
+        
+        long long sum=0;;
+        for(int i=l; (i<l+m) && (treasure[i]>0); i++){
+                sum=sum+treasure[i];
+        }
+        
+        printf("%lld\n", sum);
+    }
+    return 0;
+}

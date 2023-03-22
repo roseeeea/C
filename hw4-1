@@ -1,3 +1,42 @@
+//AC version
+#include<stdio.h>
+
+int main(void){
+    long long n, q;  // <10^6
+    
+    
+    scanf("%lld%lld", &n, &q);
+    long long treasure[n+1];
+    long long presum[n+1];// <10^5
+
+    
+    for(int i=1; i<n+1; i++){
+        scanf("%lld", &treasure[i]);
+    }
+    
+    for(int i=1; i<n+1; i++){
+        if(treasure[i]>0){
+            presum[i]=presum[i-1]+treasure[i];  }
+        else{
+            presum[i]=presum[i-1];
+        }
+    }
+    
+    
+    while(q--){
+        int l, r, m;   //l,r<10^6
+        scanf("%d%d%d", &l, &r, &m);
+        
+        long long sum=presum[l+m-1]-presum[l-1];
+        
+        printf("%lld\n", sum);
+    }
+    return 0;
+}
+
+
+________________________________________
+// run time
 #include<stdio.h>
 
 int main(void){

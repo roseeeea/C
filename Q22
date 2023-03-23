@@ -1,0 +1,11 @@
+#include<stdio.h>
+
+int main(void){
+    float x,y;
+    
+    scanf("%f%f", &x,&y);
+    float z=x+y;
+    printf("%.3f\n", z);
+    return 0;
+}
+

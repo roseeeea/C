@@ -1,3 +1,37 @@
+//AC version
+#include<stdio.h>
+
+int area[1000001];
+
+
+int main(void){
+    area[0]=0;
+    
+    for(int i=1; i<1000001; i++){
+        int x=0;
+        int a=i;
+        while(a>0){
+            if(a%10==1){
+                x++;
+            }
+            a=a/10;
+        }
+        area[i]=area[i-1]+x;
+    }
+    
+    int t;
+    scanf("%d", &t);
+    
+    while(t--){
+        int a,b;
+        scanf("%d%d", &a, &b);
+        printf("%d\n", area[b]-area[a-1]);
+    }
+    return 0;
+}
+
+
+___________________________________-
 //debug
 
 #include<stdio.h>

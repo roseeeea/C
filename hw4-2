@@ -1,3 +1,65 @@
+//debug
+
+#include<stdio.h>
+
+
+int main(void){
+    int presum[1000001];
+    presum[0]=0;
+    
+    for(int i=1; i<1000001; i++){
+        int a=i;
+        int x=0;
+        for(int j=1; j<=1000000; j=j*10){
+           // int b=0;
+            if(a/10!=0){
+                if(a%10>=1){
+                    x=x+(a/10+1)*j;
+                    a=a/10;
+                   // b++;
+                }
+                else if(a%10<1){
+                    x=x+(a/10)*j;
+                    a=a/10;
+                   // b++;
+                }
+            }
+            else{
+                if(a==1){
+                    if(i==1){
+                        x=1;
+                        break;
+                    }
+                    else{
+                        x=x+i-j+1;
+                        break;
+                    }
+                }
+                else if(a>1){
+                    x=x+j;
+                    break;
+                }
+                
+            }
+            
+        }
+        presum[i]=x;
+    }
+    
+    int test;
+    scanf("%d", &test);
+    while(test--){
+        int k,w;
+        scanf("%d%d", &k, &w);
+        int ans=presum[w]-presum[k-1];
+        printf("%d\n", ans);
+    }
+    
+    return 0;
+    
+}
+
+_____________________________________
 #include<stdio.h>
 
 int t(int x){

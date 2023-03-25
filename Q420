@@ -75,10 +75,10 @@ int main(void){
     while(t--){ //10^6
     long long color[3];
     for(int i=0; i<3; i++){
-        scanf("%lld", &color[i]);
+        scanf("%lld", &color[i]); //輸入糖果數值
     }
     
-    for(int i=0; i<3; i++){ //氣泡排序
+    for(int i=0; i<3; i++){ //氣泡排序（由小排到大）
         for(int j=i+1; j<3; j++){
             if(color[i]>color[j]){
                 long long temp=color[i];
@@ -88,25 +88,24 @@ int main(void){
         }
     }
     
-    //for(int i=0; i<3; i++){ //test
+    //for(int i=0; i<3; i++){ //test：查看排列是否順利
         //printf("%d ", color[i]);
     //}
     
     long long ans=0;
-    if(color[2]>color[1] && color[1]>color[0]){
+     //狀況一：三者數量不一樣：將中的根大的配，小的跟大的在互配
+    if(color[2]>color[1] && color[1]>color[0]){ 
         long long k=color[2]-color[1];
         ans=ans+color[1];
-        //printf("k=%d ", k); //test
         if(k>color[0]){
             ans=ans+color[0];}
         else{
-            ans=ans+k;
-            
-        }
-    }
-    else{
+            ans=ans+k; }
+        }     
+    else{ //排列剩下情況
         if(color[0]==color[1] && color[1]!=color[2]){
-            ans=color[0]*2;
+            ans=color[0]*2; //這裡有bug：3,3,4
+            //改成 ans=color[0]+[color[2]-color[0] if it >color[0].....
         }
         else if(color[1]==color[2] && color[0]!=color[1]){
             ans=ans+color[0];

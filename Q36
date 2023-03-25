@@ -1,0 +1,35 @@
+#include<stdio.h>
+
+int binary(int x){
+    int output=0;
+    int t=1;
+    while(x!=0){
+        int a=x%2;
+        output=output+a*t;
+        t=t*10;
+        x=x/2;
+    }
+    return output;
+}
+
+
+
+int main(void){
+    int N;
+    scanf("%d", &N);
+    
+    
+    int carry=binary(N);
+    int c=0;
+    while(carry%10!=0){
+        c++;
+        carry=carry/10;
+    }
+    
+    
+    int ans=binary(N+1);
+    
+    printf("%d %d\n", ans, c);
+    
+    return 0;
+}

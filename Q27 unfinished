@@ -1,0 +1,44 @@
+#include<stdio.h>
+
+int main(void){
+    int T;
+    int ans=0;
+    
+    scanf("%d", &T);
+    
+    while(T--){
+        int N;
+        scanf("%d", &N);
+        
+        int XY[N][2];
+
+        
+        for(int x=0; x<N; x++){
+            for(int y=0; y<2; y++){
+                scanf("%d", &XY[x][y]);
+            }
+        }
+        
+        int h=0;
+        int m[1000000];
+        int k=0;
+        for(int i=0; i<N; i++){
+            for(int j=i+1; j<N; j++){
+                if(XY[i][0]!=XY[j][0]){
+                    m[k]=(XY[j][1]-XY[i][1])/(XY[j][0]-XY[i][0]);
+                    k++;
+                }
+                else{
+                    h++;
+                }
+            }
+        }
+        
+        
+
+    }
+    
+
+    return 0;
+    
+}

@@ -1,3 +1,71 @@
+//AC
+//先將糖果從小排到大。
+//將最小跟最大的用中間的糖果補成一樣
+//如果中間有剩，將他跟小和大互相配
+//大的在跟小的配（兩堆數量會一樣）
+#include<stdio.h>
+
+int main(void){
+    int t;
+    scanf("%d", &t);
+    
+    while(t--){ //10^6
+        int color[3];
+        for(int i=0; i<3; i++){
+            scanf("%d", &color[i]);
+        }
+    
+        for(int i=0; i<3; i++){ //氣泡排序
+            for(int j=i+1; j<3; j++){
+                if(color[i]>color[j]){
+                    int temp=color[i];
+                    color[i]=color[j];
+                    color[j]=temp;
+                }
+            }
+        }
+    
+    //for(int i=0; i<3; i++){ //test
+        //printf("%d ", color[i]);
+    //}
+    
+        int ans=0;
+        if(color[1]>(color[2]-color[0])){
+            int a=color[2]-color[0];
+            ans= ans+a;
+            color[1]=color[1]-a;
+            color[2]=color[2]-a;
+            
+            if(color[1]%2==0){
+                ans= ans+color[1];
+                ans=ans+color[2]-color[1]/2;
+            }
+            else{
+                ans= ans+color[1]-1;
+                ans=ans+color[2]-color[1]/2;
+            }
+        }
+        else{
+            ans=ans+color[1];
+            color[2]=color[2]-color[1];
+            if(color[2]>=color[0]){
+                ans=ans+color[0];
+            }
+            else{
+                ans=ans+color[2];
+            }
+        }
+            
+        
+        printf("%d\n", ans);
+        
+    }
+    
+    return 0;
+}
+
+
+__________________________________
 #include<stdio.h>
 
 int main(void){

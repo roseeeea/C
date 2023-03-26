@@ -29,3 +29,23 @@ int main(void){
  }
 return 0;}
 //
+
+
+____________________________________
+week 5
+
+//char getchar(), char putchar()
+#include<stdio.h>
+#include<ctype.h>
+int main(void)P
+
+char ch;
+while((ch=getchar()) != '\n'){
+putchar(tolower(ch));
+}
+putchar('\n');
+
+return 0;
+}
+//
+

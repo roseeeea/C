@@ -1,23 +1,25 @@
+//版本二：針對平行線斜率可能相同做改善
+//ans 依然無法正常運行（測試過ms陣列是正確）
 #include<stdio.h>
 
 int ms[1000000];
-int dsx[100];
-int dsy[100];
+int dsx[100]; //紀錄每一組三點共線的其中一點x座標
+int dsy[100];//紀錄每一組三點共線的其中一點y座標
 int s=0;
 int mh[1000000];
 int h=0;
 
-//平行
+
 int M(int x1, int y1, int x2, int y2, int x3, int y3){
     int a=0;
-    if((y2-y1)*(x3-x1)-(y3-y1)*(x2-x1)==0){
-        if((x2-x1)!=0){
-            if(s!=0){
+    if((y2-y1)*(x3-x1)-(y3-y1)*(x2-x1)==0){ //如果三者可能共線
+        if((x2-x1)!=0){ //分母不能等於零
+            if(s!=0){ 
             for(int i=0; i<s; i++){
-                if(ms[i]==(y2-y1)/(x2-x1)){
-                    if(ms[i]!=(dsy[i]-y1)/(dsx[i]-x1)){
-                        ms[s]=(y2-y1)/(x2-x1);
-                        dsx[s]=x1;
+                if(ms[i]==(y2-y1)/(x2-x1)){     //斜率與之前的線重複
+                    if(ms[i]!=(dsy[i]-y1)/(dsx[i]-x1)){  //用到之前的點去看是否是相同的線，還是平行
+                        ms[s]=(y2-y1)/(x2-x1);  //當作新的斜率去看待
+                        dsx[s]=x1; //記錄點
                         dsy[s]=y1;
                         s++;
                         a= 1;
@@ -27,7 +29,7 @@ int M(int x1, int y1, int x2, int y2, int x3, int y3){
                         break;
                     }
                 }
-                if(i==s-1){
+                if(i==s-1){ //當沒有重複斜率時
                     ms[s]=(y2-y1)/(x2-x1);
                     dsx[s]=x1;
                     dsy[s]=y1;
@@ -36,13 +38,13 @@ int M(int x1, int y1, int x2, int y2, int x3, int y3){
                 }
             }
             }
-            else{
+            else{ //對第一個共線做額外處理
                 ms[s]=(y2-y1)/(x2-x1);
                 s++;
                 a= 1;
             }
         }
-        else{
+        else{ //針對鉛直線做額外計算
             if(h!=0){
             for(int i=0; i<h; i++){
                 if(x1==mh[i]){
@@ -63,7 +65,7 @@ int M(int x1, int y1, int x2, int y2, int x3, int y3){
             }
         }
     }
-    else{
+    else{ //不共線
         a= 0;
     }
     return a;
@@ -91,24 +93,28 @@ int main(void){
             for(int j=i+1; j<n; j++){
                 for(int k=j+1; k<n; k++){
                         if(M(a[i][0], a[i][1], a[j][0], a[j][1], a[k][0], a[k][1])==1){
-                            ans=s+h;
+                            ans=s+h; //s h確定無誤，但ans無法運行
                         }
                 }
             }
         }
         
-        //test
+        //test:測試s
+        /*
         for(int i=0; i<s; i++){
             printf("%d ", ms[i]);
         }
+        */
         
         printf("%d\n", s+h);
-        s=0;
+        s=0; //數值歸零
         h=0;
     }
     return 0;
 }
 _______________________________________
+//第一版本：沒有考慮到平線，測資過兩筆
+//ans 無法運作
 #include<stdio.h>
 
 int ms[1000000];
@@ -119,28 +125,28 @@ int h=0;
 
 int M(int x1, int y1, int x2, int y2, int x3, int y3){
     int a=0;
-    if((y2-y1)*(x3-x1)-(y3-y1)*(x2-x1)==0){
-        if((x2-x1)!=0){
+    if((y2-y1)*(x3-x1)-(y3-y1)*(x2-x1)==0){        //是否共線
+        if((x2-x1)!=0){ //分母不等於零
             if(s!=0){
             for(int i=0; i<s; i++){
-                if(ms[i]==(y2-y1)/(x2-x1)){
+                if(ms[i]==(y2-y1)/(x2-x1)){ //若斜率相同，視為同一條（未考慮平行）
                     a= 0;
                     break;
                 }
                 if(i==s-1){
-                    ms[s]=(y2-y1)/(x2-x1);
+                    ms[s]=(y2-y1)/(x2-x1); //斜率與前面都不同
                     s++;
                     a= 1;
                 }
             }
             }
-            else{
+            else{ //針對第一點進行另外的判斷
                 ms[s]=(y2-y1)/(x2-x1);
                 s++;
                 a= 1;
             }
         }
-        else{
+        else{ //鉛直線
             if(h!=0){
             for(int i=0; i<h; i++){
                 if(x1==mh[i]){
@@ -196,9 +202,10 @@ int main(void){
         }
         
         //test
-        for(int i=0; i<s; i++){
+        /*for(int i=0; i<s; i++){
             printf("%d ", ms[i]);
         }
+        */
         
         printf("%d\n", s+h);
         s=0;

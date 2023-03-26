@@ -1,0 +1,18 @@
+week 4
+
+//int strlen() vs int sizeof(): 
+strlen is the lentgh of the word(counted by letter)
+sizeof is the bytes the word use
+
+//void fflush(stdin)~clear the buffer zone （緩衝區）
+
+//scanf("%[XYZ]", x); only read the XYZ(do not need to use %s); scanf("%[^XYZ]") while find XYZ stop reading 
+//scanf("%*d", &x); the %d number will not store in x since it has *(restrain)
+//scanf("%lld(/`A`)/ ~I__I", &T[i]); (/`A`)/ ~I__I will not be counted
+
+//printf("%e", x)~%e is for scientific notation(科學符號), ex: 1499.990~1.499990e+3
+//printf("%12.3e", x)~ have 12 spaces before decimal point, the precision only to 3 after decimal point and will round up; ex: 1.499990e+3~ 1.500e+3
+//%010.2f~the unused space be filled with 0; %+4.2f(%-4.2f) the positive (negative) sign should be indicated 
+ 
+ 
+//#define SPEED 0.083~~ define all of the SPEED is 0.083

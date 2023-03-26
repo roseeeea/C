@@ -13,7 +13,8 @@ sizeof is the bytes the word use
 //printf("%e", x)~%e is for scientific notation(科學符號), ex: 1499.990~1.499990e+3
 //printf("%12.3e", x)~ have 12 spaces before decimal point, the precision only to 3 after decimal point and will round up; ex: 1.499990e+3~ 1.500e+3
 //%010.2f~the unused space be filled with 0; %+4.2f(%-4.2f) the positive (negative) sign should be indicated 
- 
+//%*.*s~ 1:*, the space; 2:*, the precision 
+
 // int a[10][10] = {0}; initialize the array with filling 0
  
 //#define SPEED 0.083~~ define all of the SPEED is 0.083

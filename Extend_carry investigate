@@ -1,0 +1,58 @@
+//find how many carry are there
+
+#include<stdio.h>
+
+int binary(int a){
+    int ans=0;
+    int t=1;
+    while(a!=0){
+        ans=ans+a%2*t;
+        t*=10;
+        a=a/2;
+    }
+    return ans;
+}
+
+
+int main(void){
+    int x, y; //y+x
+    scanf("%d%d", &x, &y);
+    
+    if(x>y){
+        int temp=x;
+        x=y;
+        y=temp;
+    }
+    
+    int x2=binary(x);
+    int y2=binary(y);
+    
+   //printf("%d %d\n", x2, y2);
+   
+    int carry=0;
+    while(x2!=0){
+        if(x2%10!=0){
+            if(y2%10!=0){
+                int k=y2;
+                int i=1;
+                while(k%10!=0){
+                        carry++;
+                        i*=10;
+                        k=k/10;
+                }
+                int temp=(y2/i)+1;
+                y2=temp*i;
+                //printf("y2=%d\n", y2);  //test
+                //printf("carry %d\n", carry);  //test
+            }
+        }
+        y2=y2/10;
+        x2=x2/10;
+        //printf("x2=%d\n", x2); //test
+        
+    }
+    
+    printf("%d\n", carry);
+    
+    return 0;
+}

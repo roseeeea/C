@@ -1,3 +1,38 @@
+//version 2
+#include<stdio.h>
+
+int main(void){
+    int a, b;
+    
+    scanf("%d.%d", &a, &b);
+    int ans3=a; //再回圈裡面a, 變成零，要記得做備份
+    int ans4=b;
+    
+    int ans1=0;
+    int ans2=0;
+    while(a>0){
+        int x=a%10;
+        ans1=ans1*10+x;
+        a=a/10;
+    }
+    while(b>0){
+        int x=b%10;
+        ans2=ans2*10+x;
+        b=b/10;
+    }
+    double x=1000*ans3+ans4; //要用double 不能用float
+    double y=1000*ans1+ans2;
+    //printf("%lf %lf\n", x, y);
+    
+    double ans=(x+y)/1000;
+    
+    printf("%.3lf\n", ans);
+    return 0;
+}
+
+
+//____________________________
+//version 1
 #include<stdio.h>
 
 int main(void){

@@ -1,3 +1,68 @@
+
+#include<stdio.h>
+
+long long m[1000][3];
+int k=0;
+
+int M(int x1, int y1, int x2, int y2, int x3, int y3){
+    int a=0;
+    if((y2-y1)*(x3-x1)-(y3-y1)*(x2-x1)==0){//是否共線
+        for(int i=0; i<k; i++){
+            if((m[i][0]*x1+m[i][1]*y1+m[i][2])==0 && (m[i][0]*x2+m[i][1]*y2+m[i][2])==0 && (m[i][0]*x3+m[i][1]*y3+m[i][2])==0){
+                goto here;
+            }
+        }
+            a=1;
+            m[k][0]= -(y2-y1);
+            m[k][1]=x2-x1;
+            m[k][2]=y2*x1-x2*y1;
+            k++;
+
+    }
+    else{
+    here: a= 0;
+    }
+    return a;
+}
+
+
+int main(void){
+    int t;
+    scanf("%d", &t);
+    
+    while(t--){
+        int ans=0;
+        
+        int n;
+        scanf("%d", &n);
+        int a[n][2];
+        
+        for(int i=0; i<n; i++){
+            for(int j=0; j<2; j++){
+                scanf("%d", &a[i][j]);
+            }
+        }
+        
+        for(int i=0; i<n; i++){
+            for(int j=i+1; j<n; j++){
+                for(int k=j+1; k<n; k++){
+                        if(M(a[i][0], a[i][1], a[j][0], a[j][1], a[k][0], a[k][1])==1){
+                            ans++;
+                        }
+                }
+            }
+        }
+        
+       
+        
+        printf("%d\n", k);
+        k=0;
+    }
+    return 0;
+}
+
+
+______________________________________
 //runtime
 //版本二：針對平行線斜率可能相同做改善
 //ans 依然無法正常運行（測試過ms陣列是正確）

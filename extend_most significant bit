@@ -1,0 +1,17 @@
+#include<stdio.h>
+
+int main(void){
+    int x;
+    scanf("%d", &x);
+    
+    int n=1;
+    while((x&((1<<n)-1))!=x){
+        n++;
+    }
+    n=n-1; //2進位x的最高位數
+    
+    int y= x&~(1<<n);
+    
+    printf("%d %d\n", n, y);
+    return 0;
+}

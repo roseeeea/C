@@ -1,0 +1,17 @@
+#include<stdio.h>
+
+int main(void){
+    int x;
+    scanf("%d", &x);
+    
+    int k=~x;
+    int lowdigit=k&(-k);
+    printf("%d\n", lowdigit);
+    
+    int record=0;
+    while(lowdigit!=0){
+        lowdigit=lowdigit>>1;
+        record++;
+    }
+    printf("%d", record);
+}

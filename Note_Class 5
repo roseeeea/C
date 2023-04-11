@@ -1,0 +1,82 @@
+//最大公因數
+#include<stdio.h>
+int gcd(int a, int b){
+  if(b==0){
+    return a;
+  }
+  else{
+  return gcd(b, a%b);
+}
+
+int main(void){
+  int x, y;
+  scanf("%d%d", &x, &y);
+  printf("%d", gcd(%d,%d));
+}
+
+//tail recursion
+//______________________
+#include<stdio.h>
+int board[11][11];
+void place(int row, int size);
+
+//show the condition of the board
+void show_board(int size){
+  int i, j;
+  for(i=1; i<=size;i++){
+    if(board[i][j]==0){
+      printf("0");
+  }
+  else{
+    printf("#");
+  }
+ }
+
+int main(void){
+  place(1. 3); //1st row and 3 chesses
+  
+}
+
+int is_valid(int row, int i){
+  int j;
+  for(j=row-1; j>=1; j--){
+    if(board[j][c]==1){
+    return 0;
+  }
+  return 1;
+}
+
+void place(int row, int size){
+  int i;
+  if(row>size){
+    for(i=1; i<=size; i++){
+      if(is_valid(row, i)){
+        board[row][i]=1;
+        place(row+1, size);
+        board[row][i]=0; \\chess move
+      }
+    }
+  }
+}
+//______________________
+#include<stdio.h>
+#define MAXNV 5
+int values[MAXNV];
+int number[MAXNV];
+
+void show(int nv);
+void change(int amount, int smallest_idx, int nv);
+
+int main(void){
+  int nv, i;
+  int money;
+  
+  scanf("%d", &nv);
+  if(nv> MAXNV)
+  
+  
+ //______________________
+}
+
+ 
+  

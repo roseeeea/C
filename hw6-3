@@ -1,0 +1,30 @@
+#include<stdio.h>
+#include<string.h>
+
+int main(void){
+    int t;
+    scanf("%d", &t);
+
+    while(t--){
+        int x;
+        char s[500];
+        scanf("%d", &x);
+        scanf("%s", s);
+        long long totallen=strlen(s);
+        
+            for(int i=0; i<x; i++){
+                int mul= s[i]-'0';
+                char t[500];
+                //for(int j=i+1; j<totallen-i; j++){
+                //    t[j-i-1]=s[j];
+                //}
+                for(int j=1; j<mul; j++){
+                    strcat(s, t);
+                }
+                totallen= i+1+mul*(totallen-i-1);
+            }
+        
+        printf("%lld\n", totallen);
+        
+    }
+}

@@ -1,0 +1,108 @@
+#include<stdio.h>
+
+int main(void){
+    int t;
+    scanf("%d", &t);
+    while(t--){
+        int n, m, k;
+        int max=0;
+        scanf("%d%d%d", &n, &m, &k);
+        
+        int N[n];
+        for(int i=0;i<n; i++){
+            scanf("%d", &N[i]);
+        }
+        
+        //k=0~l=0,r=2;k=1
+        if(k>m){
+            k=m-1;
+        }
+        
+        while(k>=0){
+            for(int i=0; i<=k; i++){
+                int l=i;
+                int r=k-i;
+                for(int j=k+1; j<=m; j++){
+                    if(N[l]>N[n-r-1]){
+                        if(j==m){
+                            if(max<N[l]){
+                                max=N[l];
+                            }
+                        }
+                        l++;
+                    }
+                    else{
+                        if(j==m){
+                            if(max<N[n-1-r]){
+                                max=N[n-r-1];
+                            }
+                        }
+                        r++;
+                    }
+                }
+                
+            }
+            k--;
+    }
+        
+        printf("%d\n", max);
+        
+        
+    }
+    return 0;
+}
+
+----------------------------
+#include<stdio.h>
+
+int main(void){
+    int t;
+    scanf("%d", &t);
+    while(t--){
+        int n, m, k;
+        int max=0;
+        scanf("%d%d%d", &n, &m, &k);
+        
+        int N[n];
+        for(int i=0;i<n; i++){
+            scanf("%d", &N[i]);
+        }
+        
+        //k=0~l=0,r=2;k=1
+        if(k>m){
+            k=m-1;
+        }
+        
+        while(k>=0){
+        for(int i=0; i<=k; i++){
+            int l=i;
+            int r=k-i;
+            for(int j=k+1; j<=m; j++){
+                if(N[l]>N[n-r-1]){
+                    if(j==m){
+                        if(max<N[l]){
+                            max=N[l];
+                        }
+                    }
+                    l++;
+                }
+                else{
+                    if(j==m){
+                        if(max<N[n-1-r]){
+                            max=N[n-r-1];
+                        }
+                    }
+                    r++;
+                }
+            }
+
+        }
+    
+        }
+        
+        printf("%d\n", max);
+        
+        
+    }
+    return 0;
+}

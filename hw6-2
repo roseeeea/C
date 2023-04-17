@@ -1,3 +1,66 @@
+//TA ans
+#include<stdio.h>
+#include<string.h>
+
+char a[1001];
+char b[1001];
+
+int dirxt_comp(int al, int ar, int bl, int br){
+    int ans=1;
+    int ax=al;
+    int bx=bl;
+    while(ax<=ar){
+        if(a[ax]!=b[bx]){
+            ans=0;
+            break;
+        }
+        ax++;
+        bx++;
+    }
+    return ans;
+}
+
+int compare(int al, int ar, int bl, int br){
+    if(((ar-al)+1) %2){
+        return dirxt_comp(al, ar, bl, br);
+    }
+    else{
+        int am=(al+ar)/2;
+        int bm=(bl+br)/2;
+        int s1=compare(al, am, bl, bm);
+        int s2=compare(am+1, ar, bm+1, br);
+        int s3=compare(al, am, bm+1, br);
+        int s4=compare(am+1, ar, bl, bm);
+        if((s1&&s2)||(s3&&s4)){
+            return 1;
+        }
+        else{
+            return 0;
+        }
+        
+    }
+}
+
+
+
+int main(void){
+    scanf("%s", a);
+    scanf("%s", b);
+    int len = strlen(a);
+    int al=0, ar=len-1;
+    int bl=0, br=len-1;
+    int ans=compare(al, ar, bl, br);
+    
+    if(ans==1){
+        printf("YES");
+    }
+    else{
+        printf("NO");
+    }
+}
+
+
+______________________________________
 #include<stdio.h>
 #include<string.h>
 

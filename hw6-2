@@ -1,6 +1,68 @@
 #include<stdio.h>
 #include<string.h>
 
+char a[101];
+char b[101];
+char ta[101];
+char tb[101];
+
+int odd(char x[101], char y[101]){
+    int ans=1;
+    unsigned long len = strlen(x);
+    for(int i=0; i<(int)len; i++){
+        if(x[i]!=y[i]){
+            ans=0;
+            break;
+        }
+    }
+    return ans;
+}
+
+void seperate(char x[101], char y[101],int k){
+    unsigned long len=strlen(x);
+    len = len/2;
+    for(int i=0; i<len-1; i++){
+        ta[i]=a[i+k];
+        tb[i]=b[i+k];
+    }
+}
+
+int main(void){
+    int ans=0;
+    scanf("%s", a);
+    scanf("%s", b);
+    
+    unsigned long len=strlen(a);
+    
+    ans=odd(a, b);
+    
+    unsigned long k;
+    
+    while(len%2!=1 && ans!=1){
+        k=len/2;
+        seperate(a, b, (int)k);
+        if(odd(ta, b)==1 && odd(tb, a)==1){
+            //a1=b2; b1=a1
+            ans=1;
+            break;
+        }
+        else{
+            //a1=b1; a2=b2
+            ans=odd(a, b);
+        }
+        
+        
+        
+        
+    }
+    
+    
+}
+
+＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
+#include<stdio.h>
+#include<string.h>
+
 int j(char a[100], char b[100]){
     int x=0;
     int len = strlen(a);

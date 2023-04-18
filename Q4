@@ -1,4 +1,60 @@
 #include<stdio.h>
+#include<stdio.h>
+#include<string.h>
+
+
+int main(void){
+    char s[2001];
+    while(scanf("%s", s)!=EOF){
+        int ans=0;
+        int len=strlen(s);
+        //printf("len = %d.\n", len);
+        
+        for(int i=2; i<=len; i++){//the seq len
+            for(int p=0; p<(len-i+1); p++){
+                char cmp[i+1];
+                strncpy(cmp, s+p, i);
+                
+                char reverse[i+1];
+                for(int j=0; j<i; j++){ //bug
+                    reverse[j]=cmp[i-1-j];
+                }
+                if(strcmp(reverse, cmp)==0){
+                    ans++;
+                    //printf("i=%d, ans = %d.\n", i, ans);
+                }
+
+                
+                
+            }
+        }
+        
+        printf("%d\n", ans);
+        
+    }
+}
+
+/*
+ char reverse[len+1];
+ for(int i=0; i<len; i++){
+     reverse[i]=s[len-1-i];
+ }
+ 
+ else{
+     ans++;
+     for(int j=0; j<i-1; j++){
+         if(cmp[j]!=cmp[j+1]){
+             ans--;
+             //printf("2ans = %d.\n", ans);
+             break;
+         }
+     }
+ }
+ */
+
+
+
+______________________________________
 #include<string.h>
 
 

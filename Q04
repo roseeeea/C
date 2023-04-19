@@ -1,6 +1,50 @@
 #include<stdio.h>
 #include<string.h>
 
+int main(void){
+    char s[2001];
+    while(scanf("%s", s)!=EOF){
+        int ans=0;
+        int len=strlen(s);
+        int l=0, r=0;
+        for(int i=0; i<len; i++){ //偶數比較
+            while((i-l)>=0 && (i+r+1)<len){
+                if(s[i-l]==s[i+r+1]){
+                    ans++;
+                    l++;
+                    r++;
+                }
+                else{
+                    break;
+                }
+            }
+            l=0;
+            r=0;
+        }
+        for(int i=0; i<len; i++){ //奇數比較
+            while((i-l)>=0 && (i+r+2)<len){
+                if(s[i-l]==s[i+r+2]){
+                    ans++;
+                    l++;
+                    r++;
+                }
+                else{
+                    break;
+                }
+            }
+            l=0;
+            r=0;
+        }
+        
+        printf("%d\n", ans);
+    }
+}
+
+
+________________________________________
+#include<stdio.h>
+#include<string.h>
+
 
 int main(void){
     char s[2001];

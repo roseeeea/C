@@ -1,0 +1,142 @@
+//TA
+#include<stdio.h>
+#include<string.h>
+#define mod 1000000007
+
+
+int main(void){
+    int t;
+    scanf("%d", &t);
+    
+    while(t--){
+        int x;
+        char s[3000000];
+        scanf("%d", &x);
+        scanf("%s", s);
+        long long ans=strlen(s);
+        unsigned long len=strlen(s);
+        
+        for(int i=1; i<=x; i++){
+            int m=s[i-1]-'0';
+            
+            
+            
+            
+            
+            
+            if(len<x){
+                char temp[3000000];
+            		strcpy(temp, s+i);//自i開始複製
+                for(int j=1; j<=m-1; j++){
+                    strcat(s, temp);
+                    len=len+(ans-i);
+                    if(len>=x){
+                        break;
+                    }
+                }
+               // printf("1tlen=%lld ", tlen);
+            }
+            ans=((ans%mod+(ans-i)*(m-1))%mod)%mod;
+            
+            
+        }
+        
+        if(ans<0){
+            ans=ans+mod;
+        }
+        
+        printf("%lld\n", ans);
+        
+    }
+}
+___________________________________________
+#include<stdio.h>
+#include<string.h>
+#define mod 1000000007
+int main(void){
+    int t;
+    scanf("%d", &t);
+    
+    while(t--){
+        int x;
+        char s[3000000];
+        scanf("%d", &x);
+        scanf("%s", s);
+        
+        int len=strlen(s);
+        int tlen=strlen(s);
+        
+        for(int i=1; i<=x; i++){
+            int mul= s[i-1]-'0';
+            
+            
+            if(x>tlen){
+                char temp[3000000];
+                strcpy(temp, s+i);
+                for(int j=1; j<mul; j++){
+                    strcat(s, temp);
+                    tlen=tlen+(len-i);
+                    if(tlen>=x){
+                        break;
+                    }
+                }
+            }
+            len=(i%mod+(mul*(len-i))%mod)%mod; \\bug!!!!!!
+        }
+        
+        if(len<0){
+        	len=len+mod;
+        }
+        
+        printf("%d\n", len);
+    }
+}
+___________________________________________________
+#include<stdio.h>
+#include<string.h>
+#define mod 1000000007
+
+
+int main(void){
+    int t;
+    scanf("%d", &t);
+    
+    while(t--){
+        int x;
+        char s[3000000];
+        scanf("%d", &x);
+        scanf("%s", s);
+        long long ans=strlen(s);
+        
+        for(int i=1; i<=x; i++){
+            int m=s[i-1]-'0';
+            
+            char temp[3000000];
+            strcpy(temp, s+i);//自i開始複製
+            
+            ans=((ans%mod+(ans-i)*(m-1))%mod)%mod;
+            
+            unsigned long len=strlen(s);
+            if(len<x){
+                for(int j=1; j<=m-1; j++){
+                    strcat(s, temp);
+                    len=strlen(s); \\bug!!!!!
+                    if(len>=x){
+                        break;
+                    }
+                }
+               // printf("1tlen=%lld ", tlen);
+               //strcpy、strlen 都是 O(n) 的操作，然後包在一層 for 迴圈裏面，所以依然是 O(n^2)，會 TLE
+            }
+            
+            
+        }
+        
+        if(ans<0){
+            ans=ans+mod;
+        }
+        
+        printf("%lld\n", ans);
+        
+    }
+}

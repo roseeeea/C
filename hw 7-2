@@ -1,0 +1,115 @@
+#include<stdio.h>
+
+int chess(int y);
+int board[15][15]={{0}};
+int y=1;
+int N;
+
+int main(void){
+    scanf("%d", &N);
+    
+    int ans=chess(y);
+    
+    printf("%d\n", ans);
+}
+
+int chess(int y){
+    int a=0;
+    if(y<N){
+        for(int i=1; i<=N; i++){
+            if(board[i][y]==0){
+                    board[i][y]=1; //點本身
+                    board[i][y+1]=1; //下方三點
+                    board[i-1][y+1]=1;
+                    board[i+1][y+1]=1;
+                    for(int j=1; j<=N; j++){
+                        board[i][j]=1; //x軸
+                        board[j-1+i][j]=1;//斜線
+                        board[i+y-j][j]=1;
+                    }
+                    y++;
+                    a=chess(y);
+                    y--;
+                    board[i][y]=0; //點本身
+                    board[i][y+1]=0; //下方三點
+                    board[i-1][y+1]=0;
+                    board[i+1][y+1]=0;
+                    for(int j=1; j<=N; j++){
+                        board[i][j]=0; //x軸
+                        board[j-1+i][j]=0;//斜線
+                        board[i+y-j][j]=0;
+                    }
+                
+            }
+        }
+    }
+    else{
+        a=1;
+    }
+    return a;
+}
+
+_______________________________________
+#include<stdio.h>
+
+int Q;
+//int board[14][14]={{0}};
+int PQ[14][2];
+int P=0;
+
+int chess( int y){
+    int rt = 0;
+        for(int j=y+1; j<14; j++){
+            for(int i=0; i<14; i++){
+                for(int k=0; k<P; k++){
+                    if(i==PQ[k][0]){
+                        break;
+                    }
+                    else if(i==PQ[k][0]-1 && j==PQ[k][1]+1){
+                        break;
+                    }
+                    else if(i==PQ[k][0]+1 && j==PQ[k][1]+1){
+                        break;
+                    }
+                    else if(((j-PQ[k][1])-(i-PQ[k][0]))==0){
+                        break;
+                    }
+                    else if(((j-PQ[k][1])-(-i+PQ[k][0]))==0){
+                        break;
+                    }
+                    else{
+                        if(P<Q-1){
+                            PQ[P][0]=i;
+                            PQ[P][1]=j;
+                            P++;
+                            rt=rt+chess(j+1);
+                            P--;
+                        }
+                        else{
+                            rt++;
+                        }
+                    }
+                    
+                }
+                
+                
+            }
+        }
+    return rt;
+}
+
+int main(void){
+    int ans=0;
+    scanf("%d", &Q);
+    
+    for(int j=0; j<14; j++){
+        for(int i=0; i<14; i++){
+            PQ[0][0]=i;
+            PQ[0][1]=j;
+            P=1;
+            ans=ans+chess(j);
+        }
+    }
+    
+    printf("%d\n", ans);
+}

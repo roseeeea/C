@@ -1,4 +1,70 @@
-_#include<stdio.h>
+#include<stdio.h>
+
+long long m(long long n, long long x){
+    if(x!=0){
+        long long k=n%x;
+        if(k>x){
+            return m(k, x);
+        }
+        else{
+            return m(x, k);
+        }
+    }
+    else{
+        //printf("x=%d\n", n);
+        return n;
+    }
+    
+}
+
+
+int main(void){
+    int t;
+    scanf("%d", &t);
+    
+    while(t--){
+        long long n;
+        long long x1, x2, x3;
+        
+        scanf("%lld%lld%lld%lld", &n, &x1, &x2, &x3);
+        
+        long long ans=0;
+        
+        long long a=m(n, x1);
+        long long b=m(n, x2);
+        long long c=m(n, x3);
+        //printf("a=%lld b=%lld c=%lld ", a, b, c);
+        
+        long long x=m(a,b);
+        x=m(x,c);
+        
+        long long k;
+        if((a!=b && b!=c && c!=a) ||(a==b==c)){
+            k=(a/x)*(b/x)*(c/x)*x;}
+        else{
+            if(a==b || a==c){
+                k=(b/x)*(c/x)*x;}
+            else {
+                k=(a/x)*(b/x)*x;}
+    
+        }
+        //printf("k=%lld ", k);
+        
+        ans=n/k;
+        
+        
+        
+        printf("%lld\n", ans);
+        
+        
+        
+    }
+}
+
+
+
+______________________________________
+#include<stdio.h>
 
 long long m(long long n, long long x){
     if(x!=0){

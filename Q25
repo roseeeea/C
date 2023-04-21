@@ -1,3 +1,72 @@
+//AC
+#include<stdio.h>
+
+long long m(long long n, long long x){
+    if(x!=0){
+        long long k=n%x;
+        if(k>x){
+            return m(k, x);
+        }
+        else{
+            return m(x, k);
+        }
+    }
+    else{
+        //printf("x=%d\n", n);
+        return n;
+    }
+    
+}
+
+
+int main(void){
+    int t;
+    scanf("%d", &t);
+    
+    while(t--){
+        long long n;
+        long long x1, x2, x3;
+        
+        scanf("%lld%lld%lld%lld", &n, &x1, &x2, &x3);
+        
+        long long ans=0;
+        
+        long long a=m(n, x1);
+        long long b=m(n, x2);
+        long long c=m(n, x3);
+        //printf("a=%lld b=%lld c=%lld ", a, b, c);
+        
+        
+        
+        long long x=m(m(a, b), c); //最大公因數
+        long long ka=a/x;
+        long long kb=b/x;
+        long long kc=c/x;
+        long long xa=m(ka,kb);
+        long long xb=m(kb,kc);
+        long long xc=m(kc, ka);
+        long long k;
+        
+        k=x*xa*xb*xc*(a/(x*xa*xc))*(b/(x*xb*xa))*(c/(x*xb*xc)); //公倍數公式
+        
+        //k=(a/xa)*(b/xb)*(c/xc); //k 錯
+        //printf("k=%lld ", k);
+        
+        ans=n/k;
+        
+        
+        
+        printf("%lld\n", ans);
+        
+        
+        
+    }
+}
+
+
+
+
+________________________________________________
 #include<stdio.h>
 
 long long m(long long n, long long x){
@@ -40,7 +109,7 @@ int main(void){
         
         long long k;
         if((a!=b && b!=c && c!=a) ||(a==b==c)){
-            k=(a/x)*(b/x)*(c/x)*x;}
+            k=(a/x)*(b/x)*(c/x)*x;}. //公倍數錯
         else{
             if(a==b || a==c){
                 k=(b/x)*(c/x)*x;}

@@ -1,3 +1,81 @@
+//TA
+#include<stdio.h>
+
+int chess(int y);
+int d1[28]={0};
+int d2[28]={0};
+int x[15]={0};
+int priorx[15]={-1};
+int y=1;
+int N;
+
+int main(void){
+    scanf("%d", &N);
+    
+    int ans=chess(y);
+    
+    printf("%d\n", ans);
+}
+
+
+
+int test(int i, int y){
+    
+   if(x[i]!=1 && d1[i+y-1]!=1 && d2[i-y+N]!=1 && (i!=priorx[y-1]-1) && (i!=priorx[y-1]+1) &&(i!=priorx[y-1])){
+           //printf("test: i=%d, y=%d true\n", i, y);
+           return 1;
+    }
+    else{
+        //printf("test: i=%d, y=%d fail \n", i, y);
+   	return 0;
+    }
+}
+
+
+int chess(int y){
+    int a=0;
+    if(y<N){
+        for(int i=1; i<=N; i++){
+            if(test(i, y)){
+                //printf("i=%d y=%d\n", i, y);
+                x[i]=1;
+                d1[i+y-1]=1;
+                d2[i-y+N]=1;
+                priorx[y]=i;
+                
+               //printf("{x[%d]=%d \nd1[%d]=%d d2[%d]=%d\npriorx=%d}\n",i, x[i], i+y-1, d1[i+y-1], i-y+N, d2[i-y+N], priorx[y]);
+
+                a=a+chess(y+1);
+                //printf("(y=%d)a=%d\n", y, a);
+                    
+                x[i]=0;
+                d1[i+y-1]=0;
+                d2[i-y+N]=0;
+            }
+                
+        }
+    }
+    else{
+        int i=1;
+        for(i=1; i<=N; i++){
+        	if(x[i]==0){
+            	break;
+            }
+        }
+        if(test(i, N)){
+       	 a=1;
+        }
+    }
+    return a;
+}
+ 
+
+
+
+
+
+
+___________________________________________
 #include<stdio.h>
 
 int chess(int y);

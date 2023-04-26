@@ -1,6 +1,7 @@
-//TA ans
+//AC ans
+//AC ans
 #include<stdio.h>
-int max(int a, int b){
+int max(int a, int b){ //找最大值
     if(a>=b){
         return a;
     }
@@ -8,7 +9,7 @@ int max(int a, int b){
         return b;}
 }
 
-int min(int a, int b){
+int min(int a, int b){ //找最小值
     if(a<=b){
         return a;
     }
@@ -20,22 +21,23 @@ int min(int a, int b){
 
 
 int main(void){
-	int t;
+    int t;
     scanf("%d", &t);
     while(t--){
-    	int n, m, k, s[5001];
+        int n, m, k, s[5001];
         int ans=0;
         scanf("%d%d%d", &n, &m, &k);
         for(int i=0; i<n; i++){
-        	scanf("%d", &s[i]);
+            scanf("%d", &s[i]);
         }
-        k=min(k, m-1);
+        k=min(k, m-1); //k可運用範圍
         
-        for(int i=0; i<=k; i++){
-        	int a=1000000000;
-            for(int j=0; j<m-k; j++){
-            	a=min(max(s[i+j], s[i+j+n-m]), a);
-               
+        for(int i=0; i<=k; i++){   //k幾個拿頭
+            int a=1000000000;
+            for(int j=0; j<m-k; j++){//不可控制的人（m-k個）
+                a=min(max(s[i+j], s[i+j+n-m]), a);
+                //i+j+n-m 是前面人選完後的人數
+                //n-m 是m後面的人 ＋ 1 個位子給m
             }
              ans=max(ans,a);
         }
@@ -43,6 +45,8 @@ int main(void){
         printf("%d\n", ans);
     }
 }
+
+
 _____________________________________
 #include<stdio.h>
 

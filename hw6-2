@@ -9,7 +9,7 @@ int dirxt_comp(int al, int ar, int bl, int br){
     int ans=1;
     int ax=al;
     int bx=bl;
-    while(ax<=ar){
+    while(ax<=ar{  //al 不一定等於bl 所以不能用for迴圈一起比較
         if(a[ax]!=b[bx]){
             ans=0;
             break;

@@ -6,7 +6,7 @@ int k;
 int ans=0;
 
 
-void collect(int b, int j){
+void collect(int b, int j){ //不往回找
  for(int s=j+1; s<n; s++){
     int A=b+a[s];
      if(A<k){

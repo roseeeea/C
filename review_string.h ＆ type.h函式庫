@@ -1,1 +1,25 @@
+#include<string.h>
+
+char\ strcat(str1, str2) or char strncat(str1, str2, n);
+//把str2(的n個字符)串接到str1後面
+int strcmp(str1, str2) or strncmp(str1, str2, n);
+//str1, str2比較 str1<str2; =0 str1=str2; >0 str1>str2
+char\ strcpy(str1, str2) or char strncpy(str1, str2, n);
+//複製str2到str1 //Ｏ(len)
+insigned long strlen(str1);
+//計算長度 //Ｏ(len)
+
+
+
+
+
+
+
+
+
+
+int memcmp(str1, str2, n); //memory base
+//比較兩個字串的前n字符, <0 str1<str2; =0 str1=str2; >0 str1>str2
+char strchr(str1, int c);
+//在str1中找出c的位置
 

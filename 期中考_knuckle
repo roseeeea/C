@@ -3,6 +3,56 @@
 int main(void){
     int n;
     int a[26]={0};
+    int ans1=0;
+    int ans2=0;
+    
+    scanf("%d", &n);
+    
+    if(n>26 || n==1){
+        ans1=1;
+        //printf("n=%d, exceed or only\n", n);
+    }
+    
+    int t=1;
+    char ch;
+    
+    while(t<=n){
+        ch=getchar(); //用兩個ans的時候，getchar不能用在外面，會輸入到其他值
+        int k=ch-'a';
+        if(a[k]==0){
+            a[k]++;
+            t++;
+        }
+        else{
+            ans2=1;
+            break;
+        }
+    }
+    //printf("final before if, ans=%d\n", ans);
+    
+
+    if(ans1==1){
+        //printf("final, ans=%d\n", 1);
+        printf("ans1:I'm the god of Knuckles!\n");
+    }
+    if(ans2==1){
+        //printf("final, ans=%d\n", 1);
+        printf("n=%d\n", n);
+        printf("ans2:I'm the god of Knuckles!\n");
+    }
+    if(ans1==0 && ans2==0){
+        //printf("final, ans=%d\n", 0);
+        printf("Different makes perfect\n");
+    }
+    
+}
+
+＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
+#include<stdio.h>
+
+int main(void){
+    int n;
+    int a[26]={0};
     int ans=0;
     
     scanf("%d", &n);

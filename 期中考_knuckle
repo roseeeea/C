@@ -8,6 +8,50 @@ int main(void){
     scanf("%d", &n);
     
     if(n>26 || n==1){
+        n=0;
+        ans=1;
+        //printf("n=%d, exceed or only\n", n);
+    }
+    
+    int t=1;
+    char ch;
+    
+    while((ch=getchar())!=EOF && t<=n){
+        int k=ch-'a';
+        if(a[k]==0){
+            a[k]++;
+            t++;
+        }
+        else{
+            ans=1;
+            break;
+        }
+    }
+    //printf("final before if, ans=%d\n", ans);
+    
+
+    if(ans==1){
+        //printf("final, ans=%d\n", 1);
+        printf("I'm the god of Knuckles!\n");
+    }
+    else if(ans==0){
+        //printf("final, ans=%d\n", 0);
+        printf("Different makes perfect\n");
+    }
+    
+}
+
+______________________________________
+#include<stdio.h>
+
+int main(void){
+    int n;
+    int a[26]={0};
+    int ans=0;
+    
+    scanf("%d", &n);
+    
+    if(n>26 || n==1){
         ans=1;
         printf("n=%d, exceed or only\n", n);
     }

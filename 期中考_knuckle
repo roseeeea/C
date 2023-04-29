@@ -13,12 +13,15 @@ int main(void){
     }
     else{
         for(int i=0; i<n; i++){
-            printf("i=%d\n", i);
+            //printf("i=%d\n", i);
             char s[1];
             
+            printf("before scanf, i=%d\n", i);
             scanf("%1s", s);
+            printf("before sa, i=%d\n", i); //這裡i出現問題
             int sa=s[0]-'a';
             
+            printf("before if, i=%d\n", i);
             if(a[sa]==0){
                 a[sa]++;
             }
@@ -26,7 +29,7 @@ int main(void){
                 ans=1;
                 break;
             }
-            printf("i=%d, ans=%d\n", i, ans); //i會自己重整？
+            printf("i=%d, ans=%d\n", i, ans);
         }
         printf("for ending\n");
     }

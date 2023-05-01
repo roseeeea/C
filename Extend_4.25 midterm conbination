@@ -1,5 +1,39 @@
 #include<stdio.h>
 
+//int alpha[52]={0};
+char s[1000];
+int n;
+
+void recursion(int t, char ans[1000]){
+    if(t==n){
+        printf("%s\n", ans);
+        return;
+    }
+    else{
+        for(int i=0; i<n; i++){
+            ans[t]=s[i];
+            recursion(t+1, ans);
+        }
+    }
+    
+}
+
+int main(void){
+    scanf("%d", &n);
+    scanf("%s", s);
+    
+    //int k1='a';
+    //int k2='A';
+    //printf("a=%d A=%d", k1, k2);
+    
+    
+    char ans[1000];
+    recursion(0, ans);
+}
+
+__________________________________________
+#include<stdio.h>
+
 int alpha[52]={0};
 int n;
 

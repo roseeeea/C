@@ -1,0 +1,37 @@
+#include<stdio.h>
+
+int alpha[52]={0};
+int n;
+
+void recursion(int t, char ans[1000]){
+    if(t==n){
+        printf("%s\n", ans);
+        return;
+    }
+    else{
+        for(int i=0; i<52; i++){
+            if(alpha[i]!=0){
+                ans[t]=(char)i+'A';
+                recursion(t+1, ans);
+            }
+        }
+    }
+    
+}
+
+int main(void){
+    char s[1000];
+    scanf("%d", &n);
+    scanf("%s", s);
+    
+    //int k1='a';
+    //int k2='A';
+    //printf("a=%d A=%d", k1, k2);
+    
+    for(int i=0; i<n; i++){
+        alpha[s[i]-'A']++;
+    }
+    
+    char ans[1000];
+    recursion(0, ans);
+}

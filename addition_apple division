@@ -1,0 +1,44 @@
+//https://cses.fi/problemset/task/1623/
+#include<stdio.h>
+#include<stdlib.h>
+
+int n;
+int min=1e9;
+int total=0;
+int p[20];
+
+void balance(int pvalue, int x){
+    if(pvalue>=total/2){
+        //printf("present value, final, %d\n",  pvalue);
+        int temp=abs(pvalue-(total-pvalue));
+        //printf("temp=%d\n", temp);
+        if(temp<min){
+            min=temp;
+        }
+        return;
+    }
+    else{
+        int nxvalue;
+        for(int i=x; i<n; i++){
+            //printf("present value, i=%d, %d\n", i, pvalue);
+            nxvalue=pvalue+p[i];
+            balance(nxvalue, i+1);
+        }
+    }
+}
+
+int main(void){
+    
+    scanf("%d", &n);
+    for(int i=0; i<n; i++){
+        scanf("%d", &p[i]);
+    }
+    
+
+    for(int i=0; i<n; i++){
+        total=total+p[i];
+    }
+    
+    balance(0, 0);
+    printf("%d\n", min);
+}

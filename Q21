@@ -1,7 +1,50 @@
 #include<stdio.h>
 
+int main(void){
+    int n, m;
+    int prior[100000]={0};
+    scanf("%d%d", &n, &m);
+    
+    int number[200001]={0};
+    for(int i=1; i<=200001; i++){
+        number[i]=i;
+    }
+    
+    
+    
+    for(int i=0; i<m; i++){
+        int index;
+        scanf("%d", &index);
+        if(number[index]==index){
+            prior[m-1-i]=index;
+            number[index]=0;
+        }
+        else{
+            for(int j=m-1; j>=0; j--){
+                if(index==prior[j]){
+                    prior[j]=0;
+                    prior[m-1-i]=index;
+                    break; //少了break ~run time
+                }
+            }
+        }
+    }
+    
+    for(int i=0; i<m; i++){
+        if(prior[i]!=0){
+            printf("%d\n", prior[i]);
+        }
+    }
+    for(int i=0; i<=n; i++){ //記得小於等於
+        if(number[i]!=0){
+            printf("%d\n", number[i]);
+        }
+    }
+}
 
 
+____________________________
+#include<stdio.h>
 
 
 int main(void){

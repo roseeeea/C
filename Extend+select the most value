@@ -1,0 +1,36 @@
+//https://acm.cs.nthu.edu.tw/problem/12698/
+#include<stdio.h>
+
+int V[10];
+int W[10];
+int n;
+int k;
+int min=1e9;
+
+void recursion(int cv, int cw, int x){
+    if(cv>=k){
+        if(cw<min){
+            min=cw;
+        }
+        return;
+    }
+    else{
+        for(int i=x; i<n; i++){
+            cv=cv+V[i];
+            cw=cw+W[i];
+            recursion(cv, cw, i+1);
+            cv=cv-V[i];
+            cw=cw-W[i];
+        }
+    }
+}
+
+int main(void){
+    scanf("%d%d", &n, &k);
+    for(int i=0; i<n; i++){
+        scanf("%d%d", &V[i], &W[i]);
+    }
+    
+    recursion(0, 0, 0);
+    printf("%d\n", min);
+}

@@ -1,0 +1,41 @@
+https://cses.fi/problemset/task/1622
+#include<stdio.h>
+
+int k;
+char base[9];
+int alpha[26]={0};
+int total=0;
+
+void recursion(int x, char s[9]){
+    if(x==k){ //注意終止條件
+        total++;
+        printf("%s\n", s);
+        return;
+    }
+    else{ //配的是位子，而不是字母
+        for(int i=0; i<26; i++){
+            if(alpha[i]!=0){
+                s[x]=(char)i+'a';  //注意(char)i 
+                alpha[i]--;
+                recursion(x+1, s);
+                alpha[i]++;
+                
+            }
+        }
+    }
+}
+
+
+int main(void){
+    scanf("%d", &k); //k=strlen(base);
+    scanf("%s", base);
+    
+    for(int i=0; i<k; i++){
+        alpha[base[i]-'a']++;
+    }
+    char s[9];
+    
+    recursion(0, s);
+    printf("%d\n", total);
+    
+}

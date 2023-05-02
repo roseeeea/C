@@ -1,3 +1,47 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+int N;
+int position[14]={0};
+int ans=0;
+
+void queen(int row){
+    if(row==N){
+        ans++;
+        return;
+    }
+    else{
+        for(int c=1; c<=N; c++){
+            int flag=1;
+            for(int r=0; r<row; r++){
+                if(c==position[r]){
+                    flag=0;
+                    break;
+                }
+                if(abs(c-position[r])==abs(row-r)){
+                    flag=0;
+                    break;
+                }
+            }
+            if(flag!=0){
+                position[row]=c;
+                queen(row+1);
+            }
+            else{
+                continue;
+            }
+        }
+    }
+}
+
+int main(void){
+    scanf("%d", &N);
+    queen(0);
+    printf("%d\n", ans);
+}
+
+
+//__________________________________
 //
 #include<stdio.h>
 

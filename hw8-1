@@ -1,3 +1,51 @@
+/////TA ｗ阿嬤還是錯的
+#include<stdio.h>
+#include<stdlib.h>
+
+long long a[1000000];
+
+int lower_bound(long long *arr, int L, int R, long long num){
+	int mid;
+    while(L<R){
+    	mid=(L+R)/2;
+        if(arr[mid]>=num)R=mid; //upperbound 就是沒有等於
+        else L=mid+1;
+    }
+    return R; //若數值不存在此陣列，Ｒ＝Ｒ
+}
+
+int main(void){
+    long long n, k, q;
+    scanf("%lld%lld%lld", &n, &k, &q);
+	for(int i=0; i<n; i++){
+    	scanf("%lld", &a[(i+(n-k))%n]); //shift
+    }
+    while(q--){
+    	long long f;
+    	scanf("%lld", &f);
+        int a1=lower_bound(a, 0, (n-k), f); //a1 must >a2
+        int a2=lower_bound(a, (n-k), n, f);
+        if(a1 ==(n-k)){ //Ｒ＝Ｒ
+        	printf("gan ni nya sai bau \n");
+        }
+        else if(a2==n){ //a2的最邊邊（算不存在）
+        	printf("%d\n", a1+1);
+        }
+        else{
+        	if(abs(f-a[a1])<=abs(f-a[a2])){
+            	printf("%d\n", a1+1);
+            }
+            else{
+            	printf("%d\n", a2+1);
+            }
+            
+        }
+    
+    }
+
+}
+    
+_____________________________________
 #include<stdio.h>
 #include<stdlib.h>
 long long a[1000000];

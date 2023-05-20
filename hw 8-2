@@ -1,0 +1,56 @@
+#include<stdio.h>
+# define MIN (1<<31)-1
+
+int a[100];
+
+int search(int x, int n){
+	int l=0;
+    int r=n;
+    int ans=0;
+    while(l<r){
+    	int m=(l+r)/2;
+        if(a[m]<a[x]){
+            m=l+1;
+            ans=m;
+        }
+        if(a[m]>a[x])m=r;
+        if(a[m]==a[x]){
+            ans=m;
+            break;
+        }
+    }
+    return a[ans];
+}
+
+int main(void){
+    int ans=1;
+    int n, k;
+    scanf("%d%d", &n, &k);
+    for(int i=0; i<n; i++){
+    	scanf("%d", &a[i]);
+    }
+    
+    int cs=0;
+    int st=0;
+    while(a[n-1]>k){
+        int nx;
+    	nx=search(k, n);
+        if(nx!=cs){
+            cs=nx;
+        	k=k+nx;
+            st++;
+        }
+        else{
+            ans=0;
+        	break;
+        }
+    }
+    
+    if(ans>0){
+    	printf("%d\n", st);
+    }
+    else{
+    	printf("The Legend Falls.\n");
+    }
+	
+}

@@ -1,0 +1,86 @@
+#include<stdio.h>
+#include<stdlib.h>
+long long a[1000000];
+
+int find_position(int x, int n){
+	int l=0, r=n;
+    int ansl=0;
+    while(l<r){
+    	int m=(l+r)/2;
+        if(a[m]<x){
+            ansl=m;
+            l=m+1;
+        }
+        else if(a[m]>x){
+            r=m;
+        }
+        else if(a[m]==x){
+         ansl=m;
+       	 break;
+        }
+    }
+    //printf("ansl=%d\n", ansl);
+    return ansl;
+}
+
+int main(void){
+	long long n, k, q;
+    scanf("%lld%lld%lld", &n, &k, &q);
+    
+    for(int i=0; i<n; i++){
+    	scanf("%lld", &a[i]);
+    }
+    
+    while(q--){
+    	long long x;
+        long long ans;
+        scanf("%d", &x);
+        int p1=find_position(x, n);
+        if(p1<(n-1)){
+        	int p2=p1+1;
+            //printf("x-a[p1]=%d, a[p2]-x=%d\n", x-a[p1], a[p2]-x);
+            
+            if(abs(x-a[p1])<=abs(x-a[p2])){  /////進不去幹
+                //printf("p1win\n");
+            	ans=(p1-k);
+                if(ans<0){
+        			ans=ans+n;
+       			 }
+            }
+            if(abs(x-a[p1])>abs(x-a[p2])){
+                //printf("p2win\n");
+            	ans=(p2-k);
+                if(ans<0){
+        			ans=ans+n;
+       			 }
+            }
+        }
+        else{
+            //printf("p1=%d\n", p1);
+        	ans=-1;
+        }
+        
+        
+        if(ans>=0){
+        	printf("%d\n", ans+1);
+        }
+        else{
+        printf("gan ni nya sai bau.\n");
+        }
+    }
+   
+
+}
+
+
+
+/*
+//for(int i=0; i++; i<n){
+        int x=i-k;
+        if(x<0){
+        	x=x+n-1;
+        }
+        printf("x=%d\n", x);
+    	scanf("%d", a[x]);
+    }
+    */

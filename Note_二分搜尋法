@@ -11,3 +11,38 @@ int search(int *arr, int len, int target){
 }
 
 //problem 37, 69, 102
+
+//Q37
+#include<stdio.h>
+
+int bs(int *arr, int len, int target){
+	int l=0, r=len, m;
+    while(l<r){
+        m=(l+r)/2;
+    	if(arr[m]<=target) l=m+1;
+        else r=m;
+    }
+    
+    return m;
+
+}
+
+int main(void){
+	int n, t;
+    int a[2000000];
+    scanf("%d%d", &n, &t);
+    for(int i=0; i<n; i++){
+    	scanf("%d", &a[i]);
+    }
+    
+    while(t--){
+        int x;
+        scanf("%d", &x);
+        int ans=bs(a, n, x);
+        printf("%d is at index: %d \n", x, ans);
+    	
+    }
+    
+}
+
+

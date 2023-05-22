@@ -1,0 +1,13 @@
+//標準
+int search(int *arr, int len, int target){
+  int l=0, r=len, m;
+  
+  while(l<r){
+    m=(l+r)/2; // m的計算要再回圈裡面
+    if(arr[m]<=target) l=m+1;  //left(low)bound
+    else r=m;  //哪個bound 等於就放哪個
+  }
+  return m;
+}
+
+//problem 37, 69, 102

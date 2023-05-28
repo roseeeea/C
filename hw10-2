@@ -1,0 +1,37 @@
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+
+//how to determine its MSB 
+// 10^999
+
+int cmp(const void *a, const *b){
+	char ab[2000], ba[2000];
+    strcpy(ab, (char*)a);
+    strcpy(ba, (char*)b); //連起來看誰比較大
+    strcat(ab, (char*)b);
+    strcat(ba, (char*)a);
+    return strcmp(ba, ab);  //strcmp=1~ba>ab; =-1~ab>ba 
+    //a-b a放在b前面
+}
+
+int main(void){
+	int n;
+    
+    while(scanf("%d", &n)!=EOF){
+        char str[101][1001];
+        for(int i=0; i<n; i++){
+        	scanf("%s", str[i]);
+        }
+    	qsort(str, n, sizeof(str[0]), cmp); 
+		//=1~升冪; =-1～降冪
+		//str是二維char陣列
+        for(int i=0; i<n; i++){
+        	printf("%s", str[i]);
+        }
+        printf("\n");
+        
+    }
+
+
+}

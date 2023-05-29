@@ -1,3 +1,90 @@
+ＡＣ：
+#include<stdio.h>
+#include<stdlib.h>
+
+
+//typedef 讓struct point 可以簡化成 point 
+typedef struct _Point //要空格底限
+{
+	double l;
+    double r;
+} Point; //initialize typedef
+
+/*
+空間是所有的裡面宣告的綜合
+Point p;
+p.l;
+p.r;
+
+Point *p; 指標，指標固定64bits
+*/
+
+
+int cmp(const void *A, const void *B){
+    Point a=*(Point *)A, b=*(Point *)B;
+	if(a.l<b.l) return -1;  //注意a.l
+    else if (a.l>b.l) return 1;
+    else{
+    	if(a.r>b.r) return 1;
+        else if(a.r<b.r) return -1;
+        else return 0;
+    }
+}
+
+
+
+int main(void){
+    //sort L ~ 得到起始點遞增, 比對前一段的R和後一段到Ｌ; R>L 重疊
+    int t;
+    scanf("%d", &t);
+    while(t--){
+		int n, q;
+        Point a[100000]; //尺寸注意, ＠如果a[q]會runtime(?)
+        scanf("%d%d", &n, &q);
+        for(int i=0; i<q; i++){
+        	scanf("%lf%lf", &a[i].l, &a[i].r);
+        }
+        
+        qsort(a, q, sizeof(a[0]), cmp); 
+        //sizeof 中 a[0]改Point~不影響
+        //只需要第一個大小，**是q不是n
+    	double sum=0, L=a[0].l, R=a[0].r;
+        
+        //for(int i=0; i<q; i++){
+        //	printf("%lf %lf\n", a[i].l, a[i].r);
+        //}
+        
+        for(int i=1; i<q; i++){
+        	if(a[i].l<=R && a[i].r>R){ //將a[i-1]改成R\L
+       //必較的基準需要以整體最常來看，如果上一個反而短了，那這題就錯了
+                /*
+                考慮以下情況，不成立：
+                i   ------
+               i-1 --------------
+               
+                */
+            	R=a[i].r;
+            }
+            if(a[i].l>R){
+            	sum=sum+(R-L);
+                L=a[i].l;
+                R=a[i].r;
+            }
+            
+            
+            if(i==q-1){ //記得最後一個也要考慮
+            	sum=sum+(R-L);
+            }
+            
+        }
+        
+        
+        
+        double ans=(n-sum)/n;
+        printf("%lf\n", ans);
+    }
+}
+＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
 #include<stdio.h>
 #include<stdlib.h>
 

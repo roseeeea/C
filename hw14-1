@@ -1,0 +1,36 @@
+#include<stdio.h>
+
+long long a[4]={0};
+long long ans=0;
+
+void triangle(int x, long long len){
+	if(x<3){
+    	for(long long i=a[x-1]; i<=a[x]; i++){
+            //printf("len=%d\n", len);
+            triangle(x+1, len+i);
+        }
+    }
+    else if(x>=3){
+        if(len>a[x-1] && len<a[x]){ //len可以大於a[x]
+            //printf("x=%d, ways=%d\n", x, a[x]-len);
+            ans=ans+a[x]-len;
+            return;
+        }
+        else{
+        	return;
+        }
+    }
+}
+
+
+int main(void){
+    int t;
+    scanf("%d", &t);
+    while(t--){
+   	 	scanf("%lld%lld%lld%lld", &a[0], &a[1], &a[2], &a[3]);
+        triangle(1, 0);
+        printf("%lld\n", ans);
+        ans=0;
+    }
+    
+}

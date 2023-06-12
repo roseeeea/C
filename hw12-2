@@ -1,6 +1,53 @@
 #include<stdio.h>
 
 typedef struct _Price{
+	long a;
+    long b;
+    long gap; //要long long
+} price;
+
+int cmp(const void *A, const void *B){
+	price AA=*(price *)A, BB=*(price *)B;
+    	return (BB.gap-AA.gap); 
+}
+
+int main(void){
+	int n, k;
+    price goods[100000];
+    scanf("%d%d",&n, &k);
+    for(int i=0; i<n; i++){
+    	scanf("%lld", &goods[i].a);
+    }
+    for(int i=0; i<n; i++){
+    	scanf("%lld", &goods[i].b);
+        goods[i].gap=goods[i].b-goods[i].a;
+    }
+    
+    qsort(goods, n, sizeof(goods[0]), cmp); //用落差去排
+    
+    long long ans=0;
+    
+    for(int i=0; i<k; i++){
+    	ans=ans+goods[i].a;
+    }
+    for(int i=k; i<n; i++){
+    	if(goods[i].gap>0){
+        	ans=ans+goods[i].a; //ans<10*5*n 需要long long
+        }
+        else if(goods[i].gap<0){
+        	ans=ans+goods[i].b;
+        }
+    }
+    
+    printf("%lld\n", ans);
+    
+    
+    
+}
+--------------------------
+#include<stdio.h>
+
+typedef struct _Price{
 	int a;
     int b;
     int gap;

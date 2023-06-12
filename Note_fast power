@@ -137,6 +137,68 @@ k.mat[2][2]=1;
     }
 }
 
+__________________________
+#include<stdio.h>
+#include<string.h>
+
+long long mod=1e9+7;
+
+typedef struct _Matrix{
+	long long mat[2][2];
+}matrix;
+
+matrix mul(matrix a, matrix b){
+    matrix r;
+    memset(r.mat, 0, sizeof(r.mat)); //一定要初始化，不然數字會是亂數
+	for(int i=0; i<2; i++){
+    	for(int j=0; j<2; j++){
+        	for(int k=0; k<2; k++){
+            	r.mat[i][k]=(r.mat[i][k]%mod+a.mat[i][j]*b.mat[j][k]%mod)%mod;
+            }
+        }
+    }
+    return r;
+}
+
+matrix identity;
+matrix base;
+
+matrix fps(long long x){
+	if(x==0){
+    	return identity;
+    }
+    else{
+    	matrix temp=fps(x/2);
+        if(x%2==1) return mul(mul(temp, temp), base);
+        else return mul(temp, temp);
+    }
+}
+
+int main(void){
+    identity.mat[0][0]=1;
+    identity.mat[0][1]=0;
+    identity.mat[1][0]=0;
+    identity.mat[1][1]=1;
+    
+    base.mat[0][0]=1;
+    base.mat[0][1]=1;
+    base.mat[1][0]=1;
+    base.mat[1][1]=0;
+    
+	long long x;
+    while(scanf("%lld", &x) != EOF){
+        
+        
+        if(x<=2){
+        	printf("%d\n", 1);
+        }
+        else{
+            matrix mans=fps(x-2); //前兩項是1
+            long long ans=(mans.mat[0][0]*1%mod+mans.mat[0][1]*1%mod)%mod;
+            printf("%lld\n", ans);
+        }
+    }
+}
 
 
 

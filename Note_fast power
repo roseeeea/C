@@ -138,6 +138,7 @@ k.mat[2][2]=1;
 }
 
 __________________________
+hw12-c
 #include<stdio.h>
 #include<string.h>
 

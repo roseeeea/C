@@ -21,11 +21,12 @@ int main(void){
         }
         
         for(int i=A+B; i<=B+C+1; i++){
-        	num[i]=num[i]+num[i-1]; //prefixsum
+        	num[i]=num[i]+num[i-1]; //差值轉成實值
         }
         
           for(int i=A+B; i<=B+C+1; i++){
-        	num[i]=num[i]+num[i-1]; //prefixsum
+        	num[i]=num[i]+num[i-1]; 
+	//prefix: A+B截至i的類型數量總和
         }
         
         for(int i=C; i<=D; i++){

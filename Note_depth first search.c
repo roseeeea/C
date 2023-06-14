@@ -1,6 +1,6 @@
 //9/ 10/ 49/ 63/ 84
 
-//hw10-A---------------------------------------------
+//hw10-A(Q49)---------------------------------------------
 #include<stdio.h>
 int x[10000];
 int y[10000]; //無法開到10^9
@@ -106,3 +106,64 @@ int main(void){
     }
     
 }
+//Q10------------------------------
+#include<stdio.h>
+#include<string.h>
+
+int mark[2000][26]={0};
+int check(int now, int g){
+    int flag=0;
+	for(int i=0; i<26; i++){
+    	if(mark[now][i]*mark[g][i]>0){ //不能用相等== 有兩個都是零
+        	flag=1;
+            break;
+        }
+    }
+    return flag;
+}
+
+void dfs(int now, int n, int *visited){ // char s no *
+    //printf("now=%d\n", now);
+    visited[now]=1;
+    for(int i=0; i<n; i++){
+    	if(visited[i]==1) continue;
+        if(check(now, i)==0) continue;
+           dfs(i, n, visited);
+    }
+}
+
+int main(void){
+	int t;
+    scanf("%d", &t);
+    while(t--){
+        int visited[2000]={0};
+        char s[2000][1001];
+    	int n; 
+        scanf("%d", &n);
+        for(int i=0; i<n; i++){
+        	scanf("%s", s[i]);
+            //尋找字母組合!!!!!
+            for(int j=0; j<26; j++){
+            	if(strchr(s[i], 'a'+j)) mark[i][j]=1;
+                //strchr 搜尋字元
+            }
+        }
+        
+        
+        int k=0;
+        int grp=0;
+        while(k<n){
+        	if(visited[k]==0){
+            	dfs(k, n, visited);
+                grp++;
+            }
+            k++;
+        }
+        
+        printf("%d\n", grp);
+        memset(mark, 0, sizeof(mark));
+        
+    }
+}
+//---------------------
+//Q84: http://140.114.85.195/status/43c83fd3ecd7e4b0813f442b1df0a437

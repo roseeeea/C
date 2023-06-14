@@ -127,5 +127,58 @@ int main(void){
     }
 
 }
+//hw8-C(102)---------------------------------------------------
+#include<stdio.h>
 
+long long n;
+long long a[100000];
+
+int cmp(void const *A, void const *B){
+    long long AA= *(long long *)A, BB= *(long long *)B; //*一個在外面
+    return AA-BB;
+}
+
+long long upperbound(int goal){
+	long long L=0, R=n;
+    long long m;
+    while(L<R){
+    	m=(L+R)/2;
+        if(a[m]>goal) R=m;
+        else L=m+1;
+    }
+    
+    return R;
+}
+
+long long lowerbound(int goal){
+	long long L=0, R=n;
+    long long m;
+    while(L<R){
+    	m=(L+R)/2;
+        if(a[m]>=goal) R=m;
+        else L=m+1;
+    }
+    
+    return R;
+}
+
+int main(void){
+	scanf("%lld", &n);
+    for(int i=0; i<n; i++){
+    	scanf("%lld", &a[i]);
+    }
+    
+    qsort(a, n, sizeof(a[0]), cmp);
+    
+    int q;
+    scanf("%d", &q);
+    while(q--){
+    	long long x;
+        scanf("%d", &x);
+        long long lp=lowerbound(x);
+        long long up=upperbound(x);
+        long long ans= up-lp;
+        printf("%lld\n", ans);
+    }
+}
 

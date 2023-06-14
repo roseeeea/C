@@ -14,7 +14,10 @@ int main(void){
     	long long n, p, k;
         long long a[300002]={0};
         long long q[300002]={0};
-        long long exp[300002]={0}; //買到第i個（包含前面）要花的錢（prefixsum）
+        long long exp[300002]={0}; 
+        //買到第i個（包含前面）要花的錢（prefixsum）
+        
+        
         scanf("%lld%lld%lld", &n, &p, &k);
         for(int i=1; i<=n; i++){ //<=n 包含
         	scanf("%lld", &a[i]);
@@ -22,15 +25,15 @@ int main(void){
         
         qsort(a+1, n, sizeof(a[0]), cmp); //a+1很重要
         
-       
+       //計算買幾個多少錢，不管p
         for(int i=1; i<=n; i++){ //<=n 包含
         	if(i<k){
             	exp[i]=exp[i-1]+a[i];
-                q[i]=i;
+                //q[i]=i;
             }
             else{
             	exp[i]=exp[i-k]+a[i];
-                q[i]=k+q[i-k];
+                //q[i]=k+q[i-k];
             }
         }
         

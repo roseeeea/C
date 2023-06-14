@@ -1,4 +1,4 @@
-//hw12-A
+//hw12-A------------------------------------------------
 #include<stdio.h>
 //f(i)={num of (x+y=i)}
 //prefixsum
@@ -25,29 +25,61 @@ int main(void){
         	num[i]=num[i]+num[i-1]; //prefixsum
         }
         
-        /*
+        
           for(int i=A+B; i<=B+C+1; i++){
         	num[i]=num[i]+num[i-1]; //prefixsum
-        }
-        */
+	  }
         
         for(int z=C; z<=D; z++){
-        	/*
+        	
             if(B+C>i){ // x+y的最大值是否大於 i(z)最小值 
                 ans=ans+num[B+C]-num[i];
                 //加起來（B+C）以前 的數量減掉未達或等於第三邊的量
             }
-            */
+            /*
             //這樣runtime
             for(int k=A+B; k<=B+C; k++){
             	if(z<k){
                 	ans=ans+num[k];
                 }
             }
-            
+            */
         }
         
         printf("%lld\n", ans);
         
+    }
+}
+
+//extend--------------------------------------------------
+#include<stdio.h>
+#include<string.h>
+#include<math.h>
+long long int xy[(int)1e6];
+int main(void)
+{
+    int t;
+    scanf("%d",&t);
+    while(t--)
+    {
+        int a,b,c,d;
+        long long int ans=0;
+        scanf("%d %d %d %d",&a,&b,&c,&d);
+        memset(xy,0,sizeof(xy));
+        for(int i=a;i<=b;i++)
+        {
+            xy[i+b]++;
+            xy[i+c+1]--;
+        }
+        for(int i=1;i<=b+c;i++)
+        {
+            xy[i]+=xy[i-1];
+        }
+        for(int i=c;i<=b+c;i++)
+        {
+            long long int ub=i/1.5+1;
+            ans+=xy[i]*fmax((fmin(d,i-1)-fmax(c,ub)+1),0);
+        }
+        printf("%lld\n",ans);
     }
 }

@@ -7,7 +7,7 @@ long long fpw(long x, long y){ //x是底數 y是次方
   //要注意是否需要mod
 }
 
-_________________________________________
+//_________________________________________
 //矩陣思考：馬卡夫矩陣
 /*
 | 0 1 0 |   |p(n-2)|. |p(n-1)|
@@ -19,7 +19,7 @@ multiply from start~
 | 1 2 1 |         |p(3)|  |p(x)  |
 and therefore can use fast power
 */
-___________________________________________
+//___________________________________________
 //Matrix fast power
 typdef struct _Matirx //矩陣
 {
@@ -56,7 +56,7 @@ long long fpw(Matrix x, long long y){ //x是底數 y是次方
   else return matrix_mul(tmp, tmp);
 }
 
-______________________________________________________
+//______________________________________________________
 //hw11-C
 #include<stdio.h>
 #include<string.h>
@@ -137,8 +137,8 @@ k.mat[2][2]=1;
     }
 }
 
-__________________________
-hw12-c
+//__________________________
+//hw12-c
 #include<stdio.h>
 #include<string.h>
 
@@ -201,6 +201,32 @@ int main(void){
     }
 }
 
+//hw8-a---------------------------
+#include<stdio.h>
+
+long long fp(long long x, long long y, long long m){
+	if(y==0){
+    	return 1%m; //m也可能是1
+    }
+    long long temp=fp(x, y/2, m);
+    if(y%2==0){
+    	return temp*temp%m; 
+    }
+    else{
+    return ((temp*temp)%m*x)%m; //m兩個
+    }
+}
+
+int main(void){
+	long long x, y, m;
+    scanf("%lld%lld%lld", &x, &y, &m);
+    long long ans=fp(x%m, y, m);  //x若為10^8會爆
+    if(ans<0){
+    	ans=ans+m;
+    }
+    printf("%d\n", ans);
+    
+}
 
 
 

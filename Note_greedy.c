@@ -92,3 +92,51 @@ int main(void){
     	printf("The Legend Falls.\n");
     }
 }
+//hw8-b-------------------------------------
+#include<stdio.h>
+
+int min[1000]; //INT_MAX=(1ll<<31)-1
+int max[1000]={0}; //INT_MIN=-(1ll<<31)
+
+int main(void){
+    int n;
+    scanf("%d", &n);
+    
+    for(int i=0; i<n; i++){
+    	min[i]=50000;
+    }
+    
+    for(int i=0; i<n; i++){
+        for(int j=0; j<n; j++){
+            int temp;
+     		scanf("%d", &temp);
+            //printf("temp=%d\n", temp);
+            if(max[i]<=temp){
+            	max[i]=temp;
+            }
+            //printf("min[%d]=%d\n", j, min[j]);
+            if(min[j]>=temp){
+            	min[j]=temp;
+            }
+        }
+    }
+    
+    for(int i=0; i<n; i++){
+        if(i!=n-1){
+    		printf("%d ", max[i]);
+        }
+        else{
+        	printf("%d\n", max[i]);
+        }
+    }
+    
+    for(int i=0; i<n; i++){
+        if(i!=n-1){
+    		printf("%d ", min[i]);
+        }
+        else{
+        	printf("%d\n", min[i]);
+        }
+    }
+	
+}

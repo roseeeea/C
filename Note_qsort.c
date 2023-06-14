@@ -4,6 +4,7 @@ int cmp(void const * A, void const *B){
   (struct) AA= *(struct *) A, BB=*(struct *) B;
   return AA-BB //升冪
   // return BB-AA //降冪
+  // return 1~數值要交換; -1不用
 }
 */
 

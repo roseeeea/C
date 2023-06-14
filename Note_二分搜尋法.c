@@ -49,7 +49,7 @@ int main(void){
 
 //problem 37, 69, 102
 
-//Q37
+//Q37---------------------------------------
 #include<stdio.h>
 
 int bs(int *arr, int len, int target){
@@ -76,6 +76,56 @@ int main(void){
         int ans=bs(a, n, x);
         printf("%d is at index: %d \n", x, ans);
     }
+}
+//hw9-A------------------------------------------
+/////TA
+#include<stdio.h>
+#include<stdlib.h>
+
+long long a[1000000];
+
+int lower_bound(long long *arr, long long  L, long long R, long long num){
+	long long mid;
+    while(L<R){
+    	mid=(L+R)/2;
+        if(arr[mid]>=num)R=mid; //upperbound 就是沒有等於
+        else L=mid+1;
+    }
+    
+    return R; //若數值不存在此陣列，Ｒ＝Ｒ
+}12
+
+int main(void){
+    long long n, k, q;
+    scanf("%lld%lld%lld", &n, &k, &q);
+	for(int i=0; i<n; i++){
+    	scanf("%lld", &a[(i+(n-k))%n]); //shift
+    }
+    while(q--){
+    	long long f;
+    	scanf("%lld", &f);
+        long long a1=lower_bound(&a, 0, (n-k), f); //a1 must >a2
+        long long  a2=lower_bound(&a, (n-k), n, f);
+        //printf("a1=%d\n", a1);
+        //printf("a2=%d\n", a2);
+        if(a1 ==(n-k)){ //Ｒ＝Ｒ
+        	printf("gan ni nya sai bau\n");
+        }
+        else if(a2==n){ //a2的最邊邊（算不存在）
+        	printf("%lld\n", a1+1);
+        }
+        else{
+        	if((a[a1]-f)<=(a[a2]-f)){  //不能用abs
+            	printf("%lld\n", a1+1);
+            }
+            else{
+            	printf("%lld\n", a2+1);
+            }
+            
+        }
+    
+    }
+
 }
 
 

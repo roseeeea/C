@@ -53,3 +53,42 @@ int main(void){
     }
         
 }
+
+//hw9-B(Q47)--------------------------------
+#include<stdio.h>
+
+int main(void){
+	int n, k;
+    int a[100000];
+    scanf("%d%d", &n, &k);
+    for(int i=0; i<n; i++){
+    	scanf("%d", &a[i]);
+    }
+    
+    int flag=1;
+    int energy=k;
+    int checkpoint=0;
+    for(int i=0; i<n; i++){
+    	if(a[i]>energy){
+            if(i>0){
+                checkpoint=checkpoint+1;
+                energy=a[i-1]+k;
+                if(a[i]>energy){
+                    flag=0;
+                    break;
+            	}
+            }
+            else{
+            	flag=0; 
+                break;
+            }
+        }
+    }
+    
+    if(flag==1){
+    	printf("%d\n", checkpoint);
+    }
+    else{
+    	printf("The Legend Falls.\n");
+    }
+}

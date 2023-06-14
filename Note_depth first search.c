@@ -1,4 +1,4 @@
-
+//9/ 10/ 49/ 63/ 84
 
 //hw10-A---------------------------------------------
 #include<stdio.h>
@@ -47,5 +47,62 @@ int main(void){
     
     printf("%d %d\n", sng, grp);
     
+    
+}
+
+//Q9----------------------------------
+#include<stdio.h>
+
+int x[500];
+int y[500];
+
+int check(int a, int b, int r){
+	if((x[a]-x[b])*(x[a]-x[b])+(y[a]-y[b])*(y[a]-y[b])<=r*r) return 1;
+    else return 0;
+}
+
+int dfs(int now, int n, int r, int *visited){
+	int res=1;
+    visited[now]=1;
+    //printf("now=%d\n", now);
+    for(int i=0; i<n; i++){
+    	if(visited[i]==1) continue;
+        if(check(now, i, r)==0) continue;
+        res=res+dfs(i, n, r, visited);
+    }
+    
+    return res;
+}
+
+int main(void){
+    int t;
+    scanf("%d", &t);
+    while(t--){
+        int visited[500]={0}; //不能用memset
+        int n, r, k;
+        scanf("%d%d%d", &n, &r, &k);
+        //printf("%d %d %d\n", n, r, k);
+        for(int i=0; i<n; i++){
+            scanf("%d%d", &x[i], &y[i]);
+        }
+
+        int s=0;
+        int gpa=0;
+        int gpb=0;
+        while(s<n){
+            //printf("s=%d\n", s);
+        	if(visited[s]==0){
+                int temp=dfs(s, n, r, visited);
+                //printf("grp: s=%d, %d\n", s, temp);
+            	if(temp<k){
+               	 gpa++;
+            	}
+           	 	else gpb++;
+            }
+            s++;
+        }
+        
+        printf("%d %d\n", gpa, gpb);
+    }
     
 }

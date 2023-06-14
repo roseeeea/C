@@ -1,5 +1,55 @@
 #include<stdio.h>
 #include<string.h>
+
+
+int flag2=1;  //數量重複但相同者是成功！！！
+
+typedef struct _Str{
+	char s[1001];
+    int len; //不能在struc 中直接計算長度
+} Str;
+
+int cmp(const void *a, const void *b){
+	Str A=*(Str *)a, B=*(Str *)b; //記得轉換型態
+    //if(A.len==B.len) flag2=0; //紀錄flag2
+    return A.len-B.len;
+}
+
+int main(void){
+	Str a[1000];
+    int n;
+    scanf("%d", &n);
+    for(int i=0; i<n; i++){
+    	scanf("%s", a[i].s);
+        a[i].len=strlen(a[i].s);
+    }
+    qsort(a, n, sizeof(a[0]), cmp);
+    
+    //check Y/N
+    int flag=1;
+    for(int i=1; i<n; i++){
+		//strstr 用來比對子字串(a[i-1]), 
+		//被搜尋（比較長） a[i].s
+        if(strstr(a[i].s, a[i-1].s) == NULL){
+        	flag=0;
+            break;
+        }
+   	}
+    
+    if(flag==1 && flag2==1){
+    	printf("YES\n");
+        for(int i=0; i<n; i++){
+        	printf("%s\n", a[i].s);
+        }
+    }
+    else printf("NO\n");
+    
+}
+
+
+---------------------------------
+#include<stdio.h>
+#include<string.h>
 #include<stdlib.h>
 
 int flag2=1;  //數量重複也是失敗

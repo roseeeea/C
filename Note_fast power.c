@@ -311,6 +311,31 @@ int main(void){
     
 }
 
+//hw8-a redo-------------------------------------------------
+#include<stdio.h>
+
+long long fpw(long long x, long long y, long long m){
+	if(y==0){
+    	return 1%m;
+    }
+    else{
+        long long temp=fpw(x, y/2, m);
+    	if(y%2==1)  return (temp*temp%m)*x%m; //return 記得寫
+        else return (temp*temp)%m;
+    }
+}
+
+int main(void){
+	long long x, y, m;
+    scanf("%lld%lld%lld", &x, &y, &m);
+    long long ans=fpw(x%m, y, m); //x%m
+    if(ans<0){ //ans<0
+    	ans=ans+m;
+    }
+    
+    printf("%lld\n", ans);
+}
+
 
 
   

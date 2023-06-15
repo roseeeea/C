@@ -51,6 +51,42 @@ int main(void){
     }
 }
 
+// hw12-A redo ---------------------------------------------------
+#include<stdio.h>
+
+int main(void){
+    int t;
+    scanf("%d", &t);
+    while(t--){
+        //全部 long long
+		long long  A, B, C, D;
+        long long ans=0;
+        long long f[200000]={0}; //要開到200000(4*5*10^4)
+        scanf("%lld%lld%lld%lld", &A, &B, &C, &D);
+        
+        for(int i=A; i<=B; i++){
+        	f[i+B]++;
+            f[i+C+1]--;
+        }
+        for(int i=A+B; i<=B+C+1; i++){
+        	f[i]=f[i]+f[i-1];
+        }
+        for(int i=A+B; i<=B+C+1; i++){
+        	f[i]=f[i]+f[i-1];
+        }
+        for(int i=C; i<=D; i++){
+            if(B+C>i){ //in this condition!!!! B+C>i
+        		ans=ans+f[B+C]-f[i];
+            }
+        }
+        
+        printf("%lld\n", ans);
+        
+    }
+    
+    
+}
+
 //extend--------------------------------------------------
 #include<stdio.h>
 #include<string.h>

@@ -137,7 +137,90 @@ k.mat[2][2]=1;
     }
 }
 
-//__________________________
+//hw11-c redo-----------------------------------------------------------
+#include<stdio.h>
+
+long long mod=1e9+7;
+
+typedef struct _Matrix{
+	long long mat[3][3];
+}matrix;
+
+matrix identity;
+
+matrix base;
+
+
+matrix mul(matrix a, matrix b){
+    matrix res;
+    memset(res.mat, 0, sizeof(res.mat));
+    //important!!!! 
+    //res.mat not just res
+	for(int i=0; i<3; i++){
+    	for(int j=0; j<3; j++){
+        	for(int k=0; k<3; k++){
+            	res.mat[i][k]=(res.mat[i][k]%mod+(a.mat[i][j]*b.mat[j][k])%mod)%mod;
+            }
+        }
+    }
+    
+    return res;
+}
+
+matrix fps(long long x){
+	if(x==0){
+    	return identity;
+    }
+    else{
+        matrix temp=fps(x/2);
+    	if(x%2) return mul(mul(temp, temp), base);
+        else return mul(temp, temp);
+    }
+}
+
+int main(void){
+identity.mat[0][0]=1;
+identity.mat[0][1]=0;
+identity.mat[0][2]=0;
+identity.mat[1][0]=0;
+identity.mat[1][1]=1;
+identity.mat[1][2]=0;
+identity.mat[2][0]=0;
+identity.mat[2][1]=0;
+identity.mat[2][2]=1;
+    
+base.mat[0][0]=1;
+base.mat[0][1]=2;
+base.mat[0][2]=1;
+base.mat[1][0]=1;
+base.mat[1][1]=0;
+base.mat[1][2]=0;
+base.mat[2][0]=0;
+base.mat[2][1]=1;
+base.mat[2][2]=0;
+    
+	int t;
+    scanf("%d", &t);
+    while(t--){
+    	long long x;
+        long long ans=0;
+        scanf("%lld", &x);
+        if(x>3){
+        	matrix amat=fps(x-3);
+            ans=(amat.mat[0][0]*13%mod+amat.mat[0][1]*12%mod+amat.mat[0][2]*1%mod)%mod; 
+            //這裡也要mod!!!!!!
+        }
+        else{
+            if(x==1) ans=1;
+            if(x==2) ans=12;
+            if(x==3) ans=13;
+        }
+        
+        printf("%lld\n", ans);
+    }
+}
+
+//______________________________________________________________________
 //hw12-c
 #include<stdio.h>
 #include<string.h>

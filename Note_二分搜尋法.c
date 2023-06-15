@@ -81,7 +81,7 @@ int main(void){
 /////TA
 #include<stdio.h>
 #include<stdlib.h>
-
+//全部都要long long
 long long a[1000000];
 
 int lower_bound(long long *arr, long long  L, long long R, long long num){
@@ -99,7 +99,7 @@ int main(void){
     long long n, k, q;
     scanf("%lld%lld%lld", &n, &k, &q);
 	for(int i=0; i<n; i++){
-    	scanf("%lld", &a[(i+(n-k))%n]); //shift
+    	scanf("%lld", &a[(i+(n-k))%n]); //shift，兩個括弧
     }
     while(q--){
     	long long f;

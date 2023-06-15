@@ -13,7 +13,7 @@ int main(void){
     while(t--){
         long long ans=0;
     	long long n, p, k;
-        long long a[300002]={0};
+        long long a[300002]={0};//陣列大小300002
         long long q[300002]={0};
         long long exp[300002]={0}; 
         //買到第i個（包含前面）要花的錢（prefixsum）
@@ -25,6 +25,7 @@ int main(void){
         }
         
         qsort(a+1, n, sizeof(a[0]), cmp); //a+1很重要
+	    ////到n!!!!!!(a+1後個)
         
        //計算買幾個多少錢，不管p
         for(int i=1; i<=n; i++){ //<=n 包含

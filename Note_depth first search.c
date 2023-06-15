@@ -12,8 +12,9 @@ int check(int a, int b, int r){
 }
 
 int dfs(int n, int now, int r){ //index of current point 
-    int res=1;
+    int res=1; //res=1 not 0
     visited[now]=1; //必須放這裡，如果放在if裡面，for迴圈跑會一直是1
+	// 如果visited[i] 只有visited～run time 
     for(int i=0; i<n; i++){
         //continue 開始下一個循環
         if(visited[i]) continue; //是檢驗i不是now

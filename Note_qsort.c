@@ -68,7 +68,7 @@ typedef struct _Str{
     int len; //不能在struc 中直接計算長度
 } Str;
 
-int cmp(const void *a, const void *b){
+int cmp(const void *a, const void *b){   //const在void
 	Str A=*(Str *)a, B=*(Str *)b; //記得轉換型態
     //if(A.len==B.len) flag2=0; //紀錄flag2
     return A.len-B.len;
@@ -96,7 +96,7 @@ int main(void){
    	}
     
     if(flag==1 && flag2==1){
-    	printf("YES\n");
+    	printf("YES\n"); //記得大寫！！！
         for(int i=0; i<n; i++){
         	printf("%s\n", a[i].s);
         }
@@ -105,7 +105,8 @@ int main(void){
     
 }
 
-//hw10-B-------------------------------------------
+
+//hw10-B(35)-------------------------------------------
 #include<stdio.h>
 #include<string.h>
 #include<stdlib.h>
@@ -114,7 +115,7 @@ int main(void){
 // 10^999
 
 int cmp(const void *a, const *b){
-	char ab[2000], ba[2000];
+	char ab[2000], ba[2000];  //注意：兩個加起來超過2000
     strcpy(ab, (char*)a);
     strcpy(ba, (char*)b); //連起來看誰比較大
     strcat(ab, (char*)b);
@@ -127,7 +128,7 @@ int main(void){
 	int n;
     
     while(scanf("%d", &n)!=EOF){
-        char str[101][1001];
+        char str[101][1001]; //注意：10^999 ~1000個字
         for(int i=0; i<n; i++){
         	scanf("%s", str[i]);
         }
@@ -144,7 +145,7 @@ int main(void){
 
 }
 
-//hw10-C----------------------------------------------
+//hw10-C(147)----------------------------------------------
 #include<stdio.h>
 #include<stdlib.h>
 
